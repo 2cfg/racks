@@ -7,7 +7,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 320px 320px 320px 1fr;
+    grid-template-columns: 120px 320px 320px 1fr;
     grid-template-rows: 1200px;
     grid-column-gap: 15px;
     padding: 20px;
@@ -15,7 +15,7 @@ body {
 
 
 .rack-view {
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
@@ -166,3 +166,79 @@ body {
 /* .rack-object {
 
 } */
+
+.tor1-view {
+    /* border: 1px solid black; */
+
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 24px 1152px 24px;
+    /* grid-template-rows: repeat(48, max-content); */
+}
+
+.tor1-switch {
+    padding: 5px;
+    display: grid;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 360px);
+    grid-row-gap: 36px;
+    background-color: #ccc;
+}
+
+.tor1-module1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 12px;
+    grid-row-gap: 2px;
+    grid-template-rows: repeat(8, 42px);
+}
+
+.tor1-module2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 12px;
+    grid-row-gap: 2px;
+    grid-template-rows: repeat(8, 42px);
+}
+
+.tor1-module3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 12px;
+    grid-row-gap: 2px;
+    grid-template-rows: repeat(8, 42px);
+}
+
+.tor-switch-cover {
+    grid-column: 1 / 4;
+    background-color: #817e6e;
+}
+
+.tor-switch-edge {
+    background-color: #817e6e;
+}
+
+.switch-port-top {
+    background-image: url("../images/switch_port.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
+    writing-mode: vertical-lr;
+}
+
+.switch-port-bottom {
+    background-image: url("../images/switch_port.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
+    writing-mode: vertical-lr;
+    /* line-height: 40px; */
+}
