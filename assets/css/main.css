@@ -1,0 +1,168 @@
+body {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #eee; 
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 320px 320px 320px 1fr;
+    grid-template-rows: 1200px;
+    grid-column-gap: 15px;
+    padding: 20px;
+}
+
+
+.rack-view {
+    border: 1px solid black;
+
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: repeat(50, 24px);
+    /* grid-template-rows: repeat(48, max-content); */
+}
+
+.unit-num {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    background-color: #505050;
+    color: #ccc;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.rack-cover {
+    grid-column: 1 / 4;
+    background-color: #505050;
+    color: #ccc;
+    line-height: 24px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.empty-unit-even {
+    background-color: lightgray;
+}
+
+.empty-unit-odd {
+    background-color: white;
+}
+
+.size-1u {
+    grid-column-start: 2;
+    grid-row-end: span 1;
+}
+
+.size-2u {
+    grid-column-start: 2;
+    grid-row-end: span 2;
+}
+
+.size-10u {
+    grid-column-start: 2;
+    grid-row-end: span 10;
+}
+
+.server1u {
+    background-image: url("../images/server_1u_front.svg");
+    line-height: 24px;
+}
+
+.server2u {
+    background-image: url("../images/server_2u_front.svg");
+    line-height: 48px;
+}
+
+.switch1u {
+    background-image: url("../images/switch_1u_rear.svg");
+    line-height: 24px;
+}
+
+.blade-hp-c7000-10u {
+    background-image: url("../images/hp_blade_c7000_front_chassis.svg");
+}
+
+.hardware {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: default;
+}
+
+.blade-hp-c7000-chassis-container {
+    margin: 0 11px;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(2, 100px);
+}
+
+.blade-hp-c7000-fullbladeserver {
+    background-image: url("../images/hp_blade_c7000_fullbladeserver.svg");
+    writing-mode: vertical-lr;
+    text-align: center;
+    border: 1px solid #fff;
+    grid-column-end: span 2;
+    cursor: default;
+}
+
+
+.blade-hp-c7000-halfbladeserver-a {
+    background-image: url("../images/hp_blade_c7000_halfbladeserver_a.svg");
+    writing-mode: vertical-lr;
+    text-align: center;
+    font-size: 0.5em;
+    border: 1px solid #fff;
+    cursor: default;
+}
+
+.blade-hp-c7000-halfbladeserver-b {
+    background-image: url("../images/hp_blade_c7000_halfbladeserver_b.svg");
+    writing-mode: vertical-lr;
+    text-align: center;
+    font-size: 0.5em;
+    border: 1px solid #fff;
+    cursor: default;
+}
+
+.blade-hp-c7000-empty-slot {
+    background-color: #333;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #fff;
+    grid-column-end: span 2;
+}
+
+.use-hint .hw-tooltiptext {
+    visibility: hidden;
+    width: 320px;
+    background-color: rgb(255, 238, 181);
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    writing-mode: horizontal-tb;
+    font-size: 18px;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+
+.use-hint:hover {
+    border: 1px solid #00a2ff;
+}
+
+.use-hint:hover .hw-tooltiptext {
+    visibility: visible;
+  }
+
+/* .rack-object {
+
+} */
