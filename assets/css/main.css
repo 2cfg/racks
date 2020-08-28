@@ -159,6 +159,11 @@ body {
     border: 1px solid #00a2ff;
 }
 
+
+.use-hint.focus {
+    border: 1px solid #00a2ff;
+}
+
 .use-hint:hover .hw-tooltiptext {
     visibility: visible;
   }
@@ -182,8 +187,8 @@ body {
     grid-column-start: 2;
     grid-row-start: 2;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 360px);
-    grid-row-gap: 36px;
+    grid-template-rows: repeat(3, 350px) 86px;
+    grid-row-gap: 0px;
     background-color: #ccc;
 }
 
@@ -191,7 +196,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 12px;
-    grid-row-gap: 2px;
+    grid-row-gap: 1px;
     grid-template-rows: repeat(8, 42px);
 }
 
@@ -199,7 +204,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 12px;
-    grid-row-gap: 2px;
+    grid-row-gap: 1px;
     grid-template-rows: repeat(8, 42px);
 }
 
@@ -207,8 +212,16 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 12px;
-    grid-row-gap: 2px;
+    grid-row-gap: 1px;
     grid-template-rows: repeat(8, 42px);
+}
+.tor1-uplinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 12px;
+    grid-row-gap: 1px;
+    grid-template-rows: repeat(2, 42px);
+    background-color: cornflowerblue;
 }
 
 .tor-switch-cover {
@@ -229,6 +242,7 @@ body {
     font-size: 26px;
     text-align: center;
     writing-mode: vertical-lr;
+    cursor: default;
 }
 
 .switch-port-bottom {
@@ -241,4 +255,5 @@ body {
     text-align: center;
     writing-mode: vertical-lr;
     /* line-height: 40px; */
+    cursor: default;
 }

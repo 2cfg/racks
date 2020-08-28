@@ -76,6 +76,7 @@ var RackBuilder = (function namespace() {
 
             let hw = document.createElement('div');
             hw.classList.add("hardware");
+            hw.id = "hw-" + item.id;
             hw.innerText = "S " + item.id;
             let isize = item.size
             let serverSize = "server" + isize + "u";
@@ -648,5 +649,34 @@ hardwareList = fetchHardwareList();
 let builder = new RackBuilder(rack, hardwareList);
 builder.init("frontview");
 builder.createFrontView();
+
+
+let rel = document.getElementById("reltest");
+
+rel.addEventListener("mouseover", function(e) {
+   // const parent = e.target.parentElement;
+   hw = document.getElementById('hw-443');
+   hw.classList.add('focus');
+});
+   
+rel.addEventListener("mouseout", function(e) {
+   // e.target.classList.remove("active");
+   hw = document.getElementById('hw-443');
+   hw.classList.remove('focus');
+});
+
+let rel2 = document.getElementById("reltest2");
+
+rel2.addEventListener("mouseover", function(e) {
+   // const parent = e.target.parentElement;
+   hw = document.getElementById('hw-346');
+   hw.classList.add('focus');
+});
+   
+rel2.addEventListener("mouseout", function(e) {
+   // e.target.classList.remove("active");
+   hw = document.getElementById('hw-346');
+   hw.classList.remove('focus');
+});
 
 // end app
