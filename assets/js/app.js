@@ -93,11 +93,18 @@ var RackBuilder = (function namespace() {
          return title;
         }
 
-        getHardwareInnerViewContainer(size) {
-           let c = document.createElement('div');
-           let resClass = 'hw-ctr-' + size*24;
-           c.classList.add(resClass);
+        getHardwareInnerViewContainer(type, size) {
 
+           let c = document.createElement('div');
+           if (type == "unitserver") {
+            let resClass = 'hw-ctr-' + size*24;
+            c.classList.add(resClass);
+           }
+           else if (type == "bladeserver") {
+            let resClass = 'blade-ctr-' + size;
+            c.classList.add(resClass);
+           }
+           
            return c;
         }
 
@@ -116,7 +123,7 @@ var RackBuilder = (function namespace() {
             hw.classList.add(serverSize);
             hw.classList.add(gridSize);
 
-            let hwCtr = this.getHardwareInnerViewContainer(item.size);
+            let hwCtr = this.getHardwareInnerViewContainer("unitserver", item.size);
             hw.appendChild(hwCtr);
             
             // add title
@@ -268,9 +275,12 @@ var RackBuilder = (function namespace() {
 
         addFullBladeServer(blade, slot) {
             let hw = document.createElement('div');
-            hw.classList.add('blade-' + blade.class + '-fullbladeserver');
-            hw.innerText = "S " + blade.id;
+            hw.classList.add('blade-' + blade.class + '-fullbladeserver-' + blade.powerstate);
+            // hw.innerText = "S " + blade.id;
             
+            let hwCtr = this.getHardwareInnerViewContainer("bladeserver", 2);
+            hw.appendChild(hwCtr);
+
             // add hint
             let hint = document.createElement('span');
             hint.innerText = "Слот: " + slot + ", Blade-сервер: S" + blade.id;
@@ -283,8 +293,10 @@ var RackBuilder = (function namespace() {
 
         addHalfBladeServer(blade, side, slot) {
             let hw = document.createElement('div');
-            hw.classList.add('blade-' + blade.class + '-halfbladeserver-' + side);
-            hw.innerText = "S " + blade.id;
+            hw.classList.add('blade-' + blade.class + '-halfbladeserver-' + side + '-' + blade.powerstate);
+            // hw.innerText = "S " + blade.id;
+            let hwCtr = this.getHardwareInnerViewContainer("bladeserver", 1);
+            hw.appendChild(hwCtr);
 
             // add hint
             let hint = document.createElement('span');
@@ -657,7 +669,7 @@ function fetchHardwareList() {
            "maxdrive": 2,
            "drives":[
          ],
-           "powerstate":1
+           "powerstate":0
         },
         {
            "id":497,
@@ -742,7 +754,7 @@ function fetchHardwareList() {
            "maxdrive": 1,
            "drives":[
          ],
-           "powerstate":1
+           "powerstate":0
         },
         {
            "id":520,

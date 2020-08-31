@@ -119,34 +119,64 @@ body {
     grid-template-rows: repeat(2, 100px);
 }
 
-.blade-hp-c7000-fullbladeserver {
-    background-image: url("../images/hp_blade_c7000_fullbladeserver.svg");
+.blade-hp-c7000-fullbladeserver-0 {
+    background-image: url("../images/hp_blade_c7000_fullbladeserver_0.svg");
     background-size: cover;
-    writing-mode: vertical-lr;
-    text-align: center;
-    border: 1px solid #fff;
+    /* writing-mode: vertical-lr; */
+    text-align: left;
+    border: 1px solid #000;
+    grid-column-end: span 2;
+    cursor: default;
+}
+
+.blade-hp-c7000-fullbladeserver-1 {
+    background-image: url("../images/hp_blade_c7000_fullbladeserver_1.svg");
+    background-size: cover;
+    /* writing-mode: vertical-lr; */
+    text-align: left;
+    border: 1px solid #000;
     grid-column-end: span 2;
     cursor: default;
 }
 
 
-.blade-hp-c7000-halfbladeserver-a {
-    background-image: url("../images/hp_blade_c7000_halfbladeserver_a.svg");
+.blade-hp-c7000-halfbladeserver-a-0 {
+    background-image: url("../images/hp_blade_c7000_halfbladeserver_a_0.svg");
     background-size: cover;
-    writing-mode: vertical-lr;
-    text-align: center;
+    /* writing-mode: vertical-lr; */
+    text-align: left;
     font-size: 0.5em;
-    border: 1px solid #fff;
+    border: 1px solid #000;
     cursor: default;
 }
 
-.blade-hp-c7000-halfbladeserver-b {
-    background-image: url("../images/hp_blade_c7000_halfbladeserver_b.svg");
+.blade-hp-c7000-halfbladeserver-a-1 {
+    background-image: url("../images/hp_blade_c7000_halfbladeserver_a_1.svg");
     background-size: cover;
-    writing-mode: vertical-lr;
-    text-align: center;
+    /* writing-mode: vertical-lr; */
+    text-align: left;
     font-size: 0.5em;
-    border: 1px solid #fff;
+    border: 1px solid #000;
+    cursor: default;
+}
+
+.blade-hp-c7000-halfbladeserver-b-0 {
+    background-image: url("../images/hp_blade_c7000_halfbladeserver_b_0.svg");
+    background-size: cover;
+    /* writing-mode: vertical-lr; */
+    text-align: left;
+    font-size: 0.5em;
+    border: 1px solid #000;
+    cursor: default;
+}
+
+.blade-hp-c7000-halfbladeserver-b-1 {
+    background-image: url("../images/hp_blade_c7000_halfbladeserver_b_1.svg");
+    background-size: cover;
+    /* writing-mode: vertical-lr; */
+    text-align: left;
+    font-size: 0.5em;
+    border: 1px solid #000;
     cursor: default;
 }
 
@@ -202,6 +232,18 @@ body {
     grid-template-columns: 72px 160px;
     grid-template-rows: 48px;
     line-height: 46px;
+}
+
+.blade-ctr-1 {
+    display: grid;
+    grid-template-columns: 14px;
+    grid-template-rows: 20px 40px 40px;
+}
+
+.blade-ctr-2 {
+    display: grid;
+    grid-template-columns: 28px;
+    grid-template-rows: 20px 40px 40px;
 }
 
 .use-hint.focus {

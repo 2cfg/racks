@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="hp_blade_c7000_fullbladeserver_0.svg"
+   viewBox="0 0 41.747003 148.28"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   width="41.747002"
+   height="148.28">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient2879">
+      <stop
+         id="stop2881"
+         style="stop-color:#7c7c7c"
+         offset="0" />
+      <stop
+         id="stop2883"
+         style="stop-color:#252525"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2879"
+       id="linearGradient4810"
+       gradientUnits="userSpaceOnUse"
+       x1="567.48999"
+       y1="313.10001"
+       x2="567.48999"
+       y2="349.75"
+       gradientTransform="translate(-509.97152,-34.127107)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2879"
+       id="linearGradient4812"
+       gradientUnits="userSpaceOnUse"
+       x1="567.48999"
+       y1="313.10001"
+       x2="567.48999"
+       y2="349.75"
+       gradientTransform="translate(-509.97152,32.822893)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="0"
+     pagecolor="#ffffff"
+     inkscape:window-height="1003"
+     inkscape:zoom="3.959798"
+     inkscape:window-x="0"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="-62.551255"
+     inkscape:cy="69.747075"
+     inkscape:window-width="1920"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     transform="translate(-24.972,-259.96199)">
+    <rect
+       x="24.972004"
+       y="259.96201"
+       width="41.747002"
+       height="148.28"
+       style="fill:#666666"
+       id="rect4993" />
+    <g
+       id="g4999"
+       transform="translate(-510.17511,-35.145007)">
+      <rect
+         x="561.14001"
+         y="304.45001"
+         width="13.244"
+         height="63.917"
+         style="fill:#1a1a1a"
+         id="rect5001" />
+      <rect
+         x="564.31"
+         y="351.09"
+         width="7.1978002"
+         height="9.7890997"
+         style="fill:#9e737d"
+         id="rect5003" />
+      <rect
+         x="564.59998"
+         y="364.48001"
+         width="2.3032999"
+         height="2.3032999"
+         style="fill:#00ff00"
+         id="rect5005" />
+      <rect
+         x="568.91998"
+         y="364.48001"
+         width="2.3032999"
+         height="2.3032999"
+         style="fill:#00ff00"
+         id="rect5007" />
+    </g>
+    <rect
+       x="51.684875"
+       y="270.22498"
+       width="11.808"
+       height="8.5506001"
+       style="fill:#999999"
+       id="rect5009" />
+    <rect
+       id="rect5011"
+       style="fill:url(#linearGradient4810)"
+       height="36.645"
+       width="8.7542"
+       y="278.9729"
+       x="53.148476" />
+    <g
+       id="g5017"
+       transform="translate(-510.17511,31.804993)">
+      <rect
+         x="561.14001"
+         y="304.45001"
+         width="13.244"
+         height="63.917"
+         style="fill:#1a1a1a"
+         id="rect5019" />
+      <rect
+         x="564.31"
+         y="351.09"
+         width="7.1978002"
+         height="9.7890997"
+         style="fill:#9e737d"
+         id="rect5021" />
+      <rect
+         x="564.59998"
+         y="364.48001"
+         width="2.3032999"
+         height="2.3032999"
+         style="fill:#00ff00"
+         id="rect5023" />
+      <rect
+         x="568.91998"
+         y="364.48001"
+         width="2.3032999"
+         height="2.3032999"
+         style="fill:#00ff00"
+         id="rect5025" />
+    </g>
+    <rect
+       x="51.684875"
+       y="337.17499"
+       width="11.808"
+       height="8.5506001"
+       style="fill:#999999"
+       id="rect5027" />
+    <rect
+       id="rect5029"
+       style="fill:url(#linearGradient4812)"
+       height="36.645"
+       width="8.7542"
+       y="345.92291"
+       x="53.148476" />
+    <g
+       id="g5031"
+       transform="translate(-513.91801,-31.978007)">
+      <g
+         transform="translate(-67.804,-2.0154)"
+         id="g5033">
+        <rect
+           x="619.51001"
+           y="298.41"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5035" />
+        <rect
+           x="619.51001"
+           y="303.78"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5037" />
+        <rect
+           x="619.51001"
+           y="309.14999"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5039" />
+        <rect
+           x="619.51001"
+           y="314.51001"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5041" />
+        <rect
+           x="619.51001"
+           y="319.88"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5043" />
+        <rect
+           x="619.51001"
+           y="325.23999"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5045" />
+        <rect
+           x="619.51001"
+           y="330.60999"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5047" />
+        <rect
+           x="619.51001"
+           y="335.97"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5049" />
+        <rect
+           x="619.51001"
+           y="341.34"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5051" />
+        <rect
+           x="619.51001"
+           y="346.70999"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5053" />
+        <rect
+           x="619.51001"
+           y="352.07001"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5055" />
+        <rect
+           x="619.51001"
+           y="357.44"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5057" />
+      </g>
+      <g
+         transform="translate(-68.092,-2.1594)"
+         id="g5059">
+        <rect
+           x="614.84003"
+           y="432.42999"
+           width="15.691"
+           height="3.4549999"
+           transform="translate(0.20359,1.0179)"
+           style="fill:#000000"
+           id="rect5061" />
+        <rect
+           x="615.03998"
+           y="428.04999"
+           width="15.691"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5063" />
+        <rect
+           x="615.03998"
+           y="422.66"
+           width="15.691"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5065" />
+        <rect
+           x="615.03998"
+           y="417.26999"
+           width="15.691"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5067" />
+        <rect
+           x="615.03998"
+           y="411.87"
+           width="15.691"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5069" />
+        <rect
+           x="621.81"
+           y="406.48001"
+           width="8.9252996"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5071" />
+        <rect
+           x="621.81"
+           y="401.09"
+           width="8.9252996"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5073" />
+        <rect
+           x="621.81"
+           y="395.70001"
+           width="8.9252996"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5075" />
+        <rect
+           x="621.81"
+           y="390.29999"
+           width="8.9252996"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5077" />
+        <rect
+           x="621.81"
+           y="384.91"
+           width="8.9252996"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5079" />
+        <rect
+           x="621.81"
+           y="379.51999"
+           width="8.9252996"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5081" />
+        <rect
+           x="621.81"
+           y="374.12"
+           width="8.9252996"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5083" />
+        <rect
+           x="626.98999"
+           y="368.73001"
+           width="3.7428999"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5085" />
+        <rect
+           x="626.98999"
+           y="363.34"
+           width="3.7428999"
+           height="3.4549999"
+           style="fill:#000000"
+           id="rect5087" />
+      </g>
+    </g>
+    <g
+       id="g5093"
+       transform="translate(-513.91801,-31.978007)">
+      <rect
+         id="rect5095"
+         style="fill:#00ff00"
+         rx="82.160004"
+         ry="0"
+         height="2.2393999"
+         width="2.4430001"
+         y="315.34"
+         x="547.23999" />
+      <rect
+         id="rect5097"
+         style="fill:#00ff00"
+         rx="82.160004"
+         ry="0"
+         height="2.2393999"
+         width="2.4430001"
+         y="321.25"
+         x="547.23999" />
+      <rect
+         id="rect5099"
+         style="fill:#00ff00"
+         rx="82.160004"
+         ry="0"
+         height="2.2393999"
+         width="2.4430001"
+         y="327.14999"
+         x="547.23999" />
+    </g>
+    <circle
+       style="fill:#ff6600;fill-opacity:1;stroke-width:1.31034482"
+       id="path1106"
+       cx="31.285452"
+       cy="267.57822"
+       r="4.7982244" />
+  </g>
+  <metadata
+     id="metadata1056">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title />
+        <dc:date>2008-12-17T09:54:26</dc:date>
+        <dc:description>This is an HP C7000 Blade</dc:description>
+        <dc:source>https://openclipart.org/detail/20733/hp-c7000-by-kingofsnakes</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>kingofsnakes</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>blade</rdf:li>
+            <rdf:li>c7000</rdf:li>
+            <rdf:li>computer</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

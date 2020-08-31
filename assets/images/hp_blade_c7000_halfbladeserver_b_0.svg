@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
-   sodipodi:docname="hp_blade_c7000_halfbladeserver_b.svg"
+   sodipodi:docname="hp_blade_c7000_halfbladeserver_b_0.svg"
    viewBox="0 0 21.000001 148.28"
    sodipodi:version="0.32"
    version="1.0"
@@ -39,13 +39,13 @@
      inkscape:window-y="0"
      pagecolor="#ffffff"
      inkscape:window-height="1003"
-     inkscape:zoom="3.959798"
+     inkscape:zoom="22.4"
      inkscape:window-x="0"
      showgrid="false"
      borderopacity="1.0"
      inkscape:current-layer="layer1"
-     inkscape:cx="8.3501557"
-     inkscape:cy="68.210073"
+     inkscape:cx="7.622745"
+     inkscape:cy="136.12368"
      inkscape:window-width="1920"
      inkscape:pageopacity="0.0"
      inkscape:document-units="px"
@@ -55,55 +55,59 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      transform="translate(-24.972,-259.96199)">
-    <rect
-       id="rect5101"
-       style="fill:#f9f9f9"
-       rx="82.160004"
-       ry="0"
-       height="97.027"
-       width="3.7428999"
-       y="293.5806"
-       x="-60.897678" />
     <g
-       id="g1408"
-       transform="matrix(-1,0,0,1,70.944008,0)">
+       id="g974">
       <rect
+         x="-60.897678"
+         y="293.5806"
+         width="3.7428999"
+         height="97.027"
+         ry="0"
+         rx="82.160004"
+         style="fill:#f9f9f9"
+         id="rect5101" />
+      <rect
+         transform="scale(-1,1)"
          id="rect4993"
          style="fill:#666666;stroke-width:0.70924616"
          height="148.28"
          width="21"
          y="259.96201"
-         x="24.972004" />
+         x="-45.972004" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="294.58115"
-         x="35.991611" />
+         x="-34.952396" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="289.19113"
-         x="35.991611" />
+         x="-34.952396" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="283.80115"
-         x="35.991611" />
+         x="-34.952396" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="278.40112"
-         x="35.991611" />
+         x="-34.952396" />
       <g
-         transform="translate(-507.71098,-53.617401)"
+         transform="matrix(-1,0,0,1,578.65499,-53.617401)"
          id="g5093">
         <rect
            x="547.23999"
@@ -134,301 +138,344 @@
            id="rect5099" />
       </g>
       <rect
+         transform="scale(-1,1)"
          id="rect5071-3"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="316.21616"
-         x="35.991611" />
+         x="-34.952396" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-6"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="310.82614"
-         x="35.991611" />
+         x="-34.952396" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-7"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="305.43616"
-         x="35.991611" />
+         x="-34.952396" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-5"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="300.03613"
-         x="35.991611" />
+         x="-34.952396" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-35"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="337.85117"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-62"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="332.46115"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-9"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="327.07117"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-1"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="321.67114"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-3-2"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="359.48618"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-6-7"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="354.09616"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-7-0"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="348.70618"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-5-9"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="343.30615"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-36"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="381.12122"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-0"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="375.7312"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-6"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="370.34119"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-2"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="364.94116"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-3-6"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="402.7562"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-6-1"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="397.36618"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-7-8"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="391.9762"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-5-7"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="386.57617"
-         x="35.991615" />
+         x="-34.952393" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-2"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="294.58115"
-         x="26.056156" />
+         x="-44.887852" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-3-7"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="316.21616"
-         x="26.056156" />
+         x="-44.887852" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-6-3"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="310.82614"
-         x="26.056156" />
+         x="-44.887852" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-7-6"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="305.43616"
-         x="26.056156" />
+         x="-44.887852" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-5-1"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="300.03613"
-         x="26.056156" />
+         x="-44.887852" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-35-2"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="337.85117"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-62-9"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="332.46115"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-9-3"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="327.07117"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-1-1"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="321.67114"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-3-2-9"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="359.48618"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-6-7-4"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="354.09616"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-7-0-7"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="348.70618"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-5-9-8"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="343.30615"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-36-4"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="381.12122"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-0-5"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="375.7312"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-6-0"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="370.34119"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-2-3"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="364.94116"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5071-3-6-6"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="402.7562"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5073-6-1-1"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="397.36618"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5075-7-8-0"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="391.9762"
-         x="26.05616" />
+         x="-44.887848" />
       <rect
+         transform="scale(-1,1)"
          id="rect5077-5-7-6"
          style="fill:#000000"
          height="3.4549999"
          width="8.9252996"
          y="386.57617"
-         x="26.05616" />
+         x="-44.887848" />
       <circle
-         r="3.0304575"
-         cy="265.30542"
-         cx="30.275301"
+         transform="scale(-1,1)"
+         r="4.2358146"
+         cy="265.30545"
+         cx="-40.847282"
          id="path1352"
-         style="fill:#008000;fill-opacity:1;stroke-width:0.77419353" />
+         style="fill:#ff6600;fill-opacity:1;stroke-width:1.08212721" />
       <rect
+         transform="scale(-1,1)"
          y="272.12555"
-         x="28.793463"
+         x="-42.150547"
          height="20.708128"
          width="2.5253813"
          id="rect1354"

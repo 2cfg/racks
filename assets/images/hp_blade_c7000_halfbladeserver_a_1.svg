@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
-   sodipodi:docname="hp_blade_c7000_halfbladeserver.svg"
+   sodipodi:docname="hp_blade_c7000_halfbladeserver_a_1.svg"
    viewBox="0 0 21.000001 148.28"
    sodipodi:version="0.32"
    version="1.0"
@@ -39,13 +39,13 @@
      inkscape:window-y="0"
      pagecolor="#ffffff"
      inkscape:window-height="1003"
-     inkscape:zoom="3.959798"
+     inkscape:zoom="11.2"
      inkscape:window-x="0"
      showgrid="false"
      borderopacity="1.0"
      inkscape:current-layer="layer1"
-     inkscape:cx="53.933289"
-     inkscape:cy="68.210073"
+     inkscape:cx="6.8941257"
+     inkscape:cy="115.8716"
      inkscape:window-width="1920"
      inkscape:pageopacity="0.0"
      inkscape:document-units="px"
@@ -55,17 +55,17 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      transform="translate(-24.972,-259.96199)">
-    <rect
-       id="rect5101"
-       style="fill:#f9f9f9"
-       rx="82.160004"
-       ry="0"
-       height="97.027"
-       width="3.7428999"
-       y="293.5806"
-       x="-60.897678" />
     <g
-       id="g1408">
+       id="g993">
+      <rect
+         x="-60.897678"
+         y="293.5806"
+         width="3.7428999"
+         height="97.027"
+         ry="0"
+         rx="82.160004"
+         style="fill:#f9f9f9"
+         id="rect5101" />
       <rect
          id="rect4993"
          style="fill:#666666;stroke-width:0.70924616"
@@ -420,11 +420,11 @@
          y="386.57617"
          x="26.05616" />
       <circle
-         r="3.0304575"
-         cy="265.30542"
-         cx="30.275301"
+         r="4.3251004"
+         cy="265.52853"
+         cx="30.319956"
          id="path1352"
-         style="fill:#008000;fill-opacity:1;stroke-width:0.77419353" />
+         style="fill:#00ff00;fill-opacity:1;stroke-width:1.10493696" />
       <rect
          y="272.12555"
          x="28.793463"
