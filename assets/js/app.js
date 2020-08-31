@@ -71,7 +71,8 @@ var RackBuilder = (function namespace() {
 
         getDiskDrive(type, capacity) {
            let d = document.createElement('div');
-           let resClass = "disk-" + type + "-" + capacity;
+           let resClass = "disk-" + type;
+           d.innerText = capacity;
 
            d.classList.add(resClass);
            return d;
@@ -85,6 +86,21 @@ var RackBuilder = (function namespace() {
          return c;
         }
 
+        getHardwareTitle(name) {
+         let title = document.createElement('div');
+         title.classList.add('hw-title');
+         title.innerText = 'S' + name;
+         return title;
+        }
+
+        getHardwareInnerViewContainer(size) {
+           let c = document.createElement('div');
+           let resClass = 'hw-ctr-' + size*24;
+           c.classList.add(resClass);
+
+           return c;
+        }
+
         addUnitServer(item, index, view) {
             // rackObject = document.createElement('div');
             // rackObject.classList.add("rack-object")
@@ -93,12 +109,18 @@ var RackBuilder = (function namespace() {
             let hw = document.createElement('div');
             hw.classList.add("hardware");
             hw.id = "hw-" + item.id;
-            hw.innerText = "S " + item.id;
+            
             let isize = item.size
-            let serverSize = "server" + isize + "u";
+            let serverSize = "server" + isize + "u-" + item.powerstate;
             let gridSize = "size-" + isize + "u";
             hw.classList.add(serverSize);
             hw.classList.add(gridSize);
+
+            let hwCtr = this.getHardwareInnerViewContainer(item.size);
+            hw.appendChild(hwCtr);
+            
+            // add title
+            hwCtr.appendChild(this.getHardwareTitle(item.id));
 
             // add drives
             let drives = item.drives;
@@ -111,7 +133,7 @@ var RackBuilder = (function namespace() {
                drives.forEach(drive => { 
                   ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
                });
-               hw.appendChild(ctr);
+               hwCtr.appendChild(ctr);
             }
 
             // add hint
@@ -136,12 +158,17 @@ var RackBuilder = (function namespace() {
 
             let hw = document.createElement('div');
             hw.classList.add("hardware");
-            hw.innerText = "S " + item.id;
             let isize = item.size
             let switchSize = "switch" + isize + "u";
             let gridSize = "size-" + isize + "u";
             hw.classList.add(switchSize);
             hw.classList.add(gridSize);
+
+            let hwCtr = this.getHardwareInnerViewContainer(item.size);
+            hw.appendChild(hwCtr);
+            
+            // add title
+            hwCtr.appendChild(this.getHardwareTitle(item.id));
 
             // add hint
             let hint = document.createElement('span');
@@ -176,13 +203,6 @@ var RackBuilder = (function namespace() {
             hw.classList.add(gridSize);
             let chassisId = "chassis-" + item.id
             hw.classList.add(chassisId);
-
-            // add hint
-            // let hint = document.createElement('span');
-            // hint.innerText = "Юнит: " + index + ", Blade-шасси: S" + item.id;
-            // hint.classList.add("hw-tooltiptext");
-            // hw.classList.add("use-hint");
-            // hw.appendChild(hint);
 
             rackObject.appendChild(this.getUnitNum(index));
             rackObject.appendChild(hw);
@@ -362,7 +382,7 @@ function fetchHardwareList() {
            "maxdrive": 4,
            "drives":[
             {"type": "ssd", "capacity": "120G"},
-            {"type": "hdd", "capacity": "1000G"}
+            {"type": "hdd", "capacity": "1Tb"}
            ],
            "powerstate":0
         },
@@ -394,7 +414,7 @@ function fetchHardwareList() {
            ],
            "maxdrive": 4,
            "drives":[
-            {"type": "hdd", "capacity": "1000G"}
+            {"type": "hdd", "capacity": "1Tb"}
          ],
            "powerstate":1
         },
@@ -426,7 +446,7 @@ function fetchHardwareList() {
            ],
            "maxdrive": 4,
            "drives":[
-            {"type": "hdd", "capacity": "1000G"}
+            {"type": "hdd", "capacity": "1Tb"}
          ],
            "powerstate":1
         },
@@ -445,7 +465,13 @@ function fetchHardwareList() {
            "maxdrive": 8,
            "drives":[
             {"type": "ssd", "capacity": "500G"},
-            {"type": "hdd", "capacity": "1000G"}
+            {"type": "hdd", "capacity": "1Tb"},
+            {"type": "ssd", "capacity": "500G"},
+            {"type": "hdd", "capacity": "1Tb"},
+            {"type": "ssd", "capacity": "1Tb"},
+            {"type": "hdd", "capacity": "1Tb"},
+            {"type": "hdd", "capacity": "1Tb"},
+            {"type": "hdd", "capacity": "1Tb"}
          ],
            "powerstate":1
         },
@@ -523,7 +549,7 @@ function fetchHardwareList() {
            "maxdrive": 4,
            "drives":[
          ],
-           "powerstate":1
+           "powerstate":0
         },
         {
            "id":421,

@@ -68,28 +68,44 @@ body {
     grid-row-end: span 10;
 }
 
-.server1u {
-    background-image: url("../images/server_1u_front.svg");
+.server1u-0 {
+    background-image: url("../images/server_1u_front_0.svg");
+    background-size: cover;
     line-height: 24px;
 }
 
-.server2u {
-    background-image: url("../images/server_2u_front.svg");
-    line-height: 48px;
+.server2u-0 {
+    background-image: url("../images/server_2u_front_0.svg");
+    background-size: cover;
+
+}
+
+.server1u-1 {
+    background-image: url("../images/server_1u_front_1.svg");
+    background-size: cover;
+
+}
+
+.server2u-1 {
+    background-image: url("../images/server_2u_front_1.svg");
+    background-size: cover;
+
 }
 
 .switch1u {
     background-image: url("../images/switch_1u_rear.svg");
-    line-height: 24px;
+    background-size: cover;
+
 }
 
 .blade-hp-c7000-10u {
     background-image: url("../images/hp_blade_c7000_front_chassis.svg");
+    background-size: cover;
 }
 
 .hardware {
     color: #fff;
-    text-align: center;
+    /* text-align: center; */
     font-weight: bold;
     font-size: 1.3em;
     font-family: Arial, Helvetica, sans-serif;
@@ -105,6 +121,7 @@ body {
 
 .blade-hp-c7000-fullbladeserver {
     background-image: url("../images/hp_blade_c7000_fullbladeserver.svg");
+    background-size: cover;
     writing-mode: vertical-lr;
     text-align: center;
     border: 1px solid #fff;
@@ -115,6 +132,7 @@ body {
 
 .blade-hp-c7000-halfbladeserver-a {
     background-image: url("../images/hp_blade_c7000_halfbladeserver_a.svg");
+    background-size: cover;
     writing-mode: vertical-lr;
     text-align: center;
     font-size: 0.5em;
@@ -124,6 +142,7 @@ body {
 
 .blade-hp-c7000-halfbladeserver-b {
     background-image: url("../images/hp_blade_c7000_halfbladeserver_b.svg");
+    background-size: cover;
     writing-mode: vertical-lr;
     text-align: center;
     font-size: 0.5em;
@@ -135,7 +154,7 @@ body {
     background-color: #333;
     width: 100%;
     height: 100%;
-    border: 1px solid #fff;
+    border: 1px solid #000;
     grid-column-end: span 2;
 }
 
@@ -155,10 +174,35 @@ body {
     z-index: 1;
   }
 
-.use-hint:hover {
-    border: 1px solid #00a2ff;
+.use-hint {
+    border: 1px solid transparent;
 }
 
+.use-hint:hover {
+    border: 1px solid #00a2ff;
+    background-size: cover;
+}
+
+
+.hardware div.hw-title {
+    /* color: #cfcfcf; */
+    padding: 1px;
+    padding-left: 5px;
+}
+
+.hw-ctr-24 {
+    display: grid;
+    grid-template-columns: 72px 180px;
+    grid-template-rows: 24px;
+    line-height: 22px;
+}
+
+.hw-ctr-48 {
+    display: grid;
+    grid-template-columns: 72px 160px;
+    grid-template-rows: 48px;
+    line-height: 46px;
+}
 
 .use-hint.focus {
     border: 1px solid #00a2ff;
@@ -170,58 +214,33 @@ body {
 
 .disk-ctr-1-4 {
     display: grid;
-    grid-template-columns: repeat(4, 48px);
+    grid-template-columns: repeat(4, 40px);
     grid-template-rows: 20px;
     padding: 1px;
 }
 
 .disk-ctr-2-8 {
     display: grid;
-    grid-template-columns: repeat(4, 48px);
+    grid-template-columns: repeat(4, 40px);
     grid-template-rows: 20px 20px;
     grid-column-gap: 1px;
     padding: 1px;
 }
 
-.disk-ssd-120G {
-    background-color: #cadcad;
+.disk-ssd {
+    background-color: #55c9ff;
+    font-size: 14px;
+    text-align: center;
+    line-height: normal;
 }
 
-.disk-ssd-250G {
-    background-color: #ccaadd;
+.disk-hdd {
+    background-color: #3dc27f;
+    font-size: 14px;
+    text-align: center;
+    line-height: normal;
 }
 
-.disk-ssd-500G {
-    background-color: #43b873;
-}
-
-.disk-ssd-1000G {
-    background-color: #3b5c1f;
-}
-
-.disk-hdd-1000G {
-    background-color: #cea125;
-}
-
-.disk-hdd-2000G {
-    background-color: #224453;
-}
-
-.disk-hdd-3000G {
-    background-color: #da2a2a;
-}
-
-.disk-hdd-4000G {
-    background-color: #5ca00f;
-}
-
-.disk-hdd-8000G {
-    background-color: #d48133;
-}
-
-.disk-hdd-10000G {
-    background-color: #5bb1c7;
-}
 /* .rack-object {
 
 } */
