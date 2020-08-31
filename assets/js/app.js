@@ -30,7 +30,7 @@ var RackBuilder = (function namespace() {
                             chassis.childs[unit * 2] = hw;
                         });
                     }
-                    console.log(chassis.childs)
+                  //   console.log(chassis.childs)
                 }
                 else if (hw.type == "halfbladeserver") {
                     let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
@@ -47,7 +47,7 @@ var RackBuilder = (function namespace() {
                             
                         });
                     }
-                    console.log(chassis.childs)
+                  //   console.log(chassis.childs)
                 }
             });
         }
@@ -69,6 +69,22 @@ var RackBuilder = (function namespace() {
             return unitNum;
         }
 
+        getDiskDrive(type, capacity) {
+           let d = document.createElement('div');
+           let resClass = "disk-" + type + "-" + capacity;
+
+           d.classList.add(resClass);
+           return d;
+        }
+
+        createDiskDriveContainer(size, maxdrive) {
+         let c = document.createElement('div');
+         let resClass = "disk-ctr-" + size + "-" + maxdrive;
+
+         c.classList.add(resClass);
+         return c;
+        }
+
         addUnitServer(item, index, view) {
             // rackObject = document.createElement('div');
             // rackObject.classList.add("rack-object")
@@ -83,6 +99,20 @@ var RackBuilder = (function namespace() {
             let gridSize = "size-" + isize + "u";
             hw.classList.add(serverSize);
             hw.classList.add(gridSize);
+
+            // add drives
+            let drives = item.drives;
+            
+            if (drives.length > 0) {
+               console.log(item.id);
+               console.log(drives);
+               let ctr = this.createDiskDriveContainer(item.size, item.maxdrive);
+               console.log(ctr);
+               drives.forEach(drive => { 
+                  ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
+               });
+               hw.appendChild(ctr);
+            }
 
             // add hint
             let hint = document.createElement('span');
@@ -195,7 +225,7 @@ var RackBuilder = (function namespace() {
 
             for (let i = 1; i < item.childsize * 2 + 1; i++) {
                 let blade = item.childs[i];
-                console.log(item.childs)
+               //  console.log(item.childs)
 
                 if (!blade) {
                     container.appendChild(this.addEmptyBladeSlot(item.class));
@@ -314,6 +344,9 @@ function fetchHardwareList() {
               "102/2/3",
               "202/2/1"
            ],
+           "maxdrive": 0,
+           "drives":[
+           ],
            "powerstate":1
         },
         {
@@ -325,6 +358,11 @@ function fetchHardwareList() {
            ],
            "pdu":[
               "102/2/2"
+           ],
+           "maxdrive": 4,
+           "drives":[
+            {"type": "ssd", "capacity": "120G"},
+            {"type": "hdd", "capacity": "1000G"}
            ],
            "powerstate":0
         },
@@ -338,6 +376,10 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/2"
            ],
+           "maxdrive": 4,
+           "drives":[
+            {"type": "ssd", "capacity": "500G"}
+         ],
            "powerstate":1
         },
         {
@@ -350,6 +392,10 @@ function fetchHardwareList() {
            "pdu":[
               "202/2/1"
            ],
+           "maxdrive": 4,
+           "drives":[
+            {"type": "hdd", "capacity": "1000G"}
+         ],
            "powerstate":1
         },
         {
@@ -362,6 +408,10 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/2"
            ],
+           "maxdrive": 4,
+           "drives":[
+            {"type": "ssd", "capacity": "120G"}
+         ],
            "powerstate":1
         },
         {
@@ -374,6 +424,10 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/3"
            ],
+           "maxdrive": 4,
+           "drives":[
+            {"type": "hdd", "capacity": "1000G"}
+         ],
            "powerstate":1
         },
         {
@@ -388,6 +442,11 @@ function fetchHardwareList() {
               "102/2/1",
               "202/2/3"
            ],
+           "maxdrive": 8,
+           "drives":[
+            {"type": "ssd", "capacity": "500G"},
+            {"type": "hdd", "capacity": "1000G"}
+         ],
            "powerstate":1
         },
         {
@@ -400,6 +459,9 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/1"
            ],
+           "maxdrive": 4,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -412,6 +474,9 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/1"
            ],
+           "maxdrive": 4,
+           "drives":[
+         ],
            "powerstate":0
         },
         {
@@ -424,6 +489,9 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/1"
            ],
+           "maxdrive": 4,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -436,6 +504,9 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/1"
            ],
+           "maxdrive": 4,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -449,6 +520,9 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/1"
            ],
+           "maxdrive": 4,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -461,6 +535,9 @@ function fetchHardwareList() {
            "pdu":[
               "202/2/2"
            ],
+           "maxdrive": 4,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -473,6 +550,9 @@ function fetchHardwareList() {
            "pdu":[
               "202/2/1"
            ],
+           "maxdrive": 4,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -485,6 +565,9 @@ function fetchHardwareList() {
            "pdu":[
               "102/2/3"
            ],
+           "maxdrive": 4,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -511,6 +594,9 @@ function fetchHardwareList() {
               "202/2/1",
               "202/2/3"
            ],
+           "maxdrive": 0,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -525,6 +611,9 @@ function fetchHardwareList() {
            "pdu":[
               
            ],
+           "maxdrive": 2,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -539,6 +628,9 @@ function fetchHardwareList() {
            "pdu":[
               
            ],
+           "maxdrive": 2,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -553,6 +645,9 @@ function fetchHardwareList() {
            "pdu":[
               
            ],
+           "maxdrive": 2,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -567,6 +662,9 @@ function fetchHardwareList() {
            "pdu":[
               
            ],
+           "maxdrive": 1,
+           "drives":[
+         ],
            "powerstate":0
         },
         {
@@ -581,6 +679,9 @@ function fetchHardwareList() {
            "pdu":[
               
            ],
+           "maxdrive": 1,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -595,6 +696,9 @@ function fetchHardwareList() {
            "pdu":[
               
            ],
+           "maxdrive": 1,
+           "drives":[
+         ],
            "powerstate":0
         },
         {
@@ -609,6 +713,9 @@ function fetchHardwareList() {
            "pdu":[
               
            ],
+           "maxdrive": 1,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -623,6 +730,9 @@ function fetchHardwareList() {
            "pdu":[
               
            ],
+           "maxdrive": 1,
+           "drives":[
+         ],
            "powerstate":1
         },
         {
@@ -636,6 +746,9 @@ function fetchHardwareList() {
             ],
             "pdu":[
                
+            ],
+            "maxdrive": 1,
+            "drives":[
             ],
             "powerstate":1
          }

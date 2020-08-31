@@ -5,7 +5,7 @@ body {
     background-color: #eee; 
 }
 
-.container {
+.rack-container {
     display: grid;
     grid-template-columns: 120px 320px 320px 1fr;
     grid-template-rows: 1200px;
@@ -168,6 +168,60 @@ body {
     visibility: visible;
   }
 
+.disk-ctr-1-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 48px);
+    grid-template-rows: 20px;
+    padding: 1px;
+}
+
+.disk-ctr-2-8 {
+    display: grid;
+    grid-template-columns: repeat(4, 48px);
+    grid-template-rows: 20px 20px;
+    grid-column-gap: 1px;
+    padding: 1px;
+}
+
+.disk-ssd-120G {
+    background-color: #cadcad;
+}
+
+.disk-ssd-250G {
+    background-color: #ccaadd;
+}
+
+.disk-ssd-500G {
+    background-color: #43b873;
+}
+
+.disk-ssd-1000G {
+    background-color: #3b5c1f;
+}
+
+.disk-hdd-1000G {
+    background-color: #cea125;
+}
+
+.disk-hdd-2000G {
+    background-color: #224453;
+}
+
+.disk-hdd-3000G {
+    background-color: #da2a2a;
+}
+
+.disk-hdd-4000G {
+    background-color: #5ca00f;
+}
+
+.disk-hdd-8000G {
+    background-color: #d48133;
+}
+
+.disk-hdd-10000G {
+    background-color: #5bb1c7;
+}
 /* .rack-object {
 
 } */
