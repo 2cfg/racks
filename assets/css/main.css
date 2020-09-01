@@ -68,6 +68,11 @@ body {
     grid-row-end: span 10;
 }
 
+.size-6u {
+    grid-column-start: 2;
+    grid-row-end: span 6;
+}
+
 .server1u-0 {
     background-image: url("../images/server_1u_front_0.svg");
     background-size: cover;
@@ -103,6 +108,11 @@ body {
     background-size: cover;
 }
 
+.blade-cisco-ucs-6u {
+    background-image: url("../images/cisco_ucs_front_chassis.svg");
+    background-size: cover;
+}
+
 .hardware {
     color: #fff;
     /* text-align: center; */
@@ -117,6 +127,29 @@ body {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(2, 100px);
+}
+
+.blade-cisco-ucs-chassis-container {
+    margin: 0 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 30px);
+}
+
+.blade-cisco-ucs-fullbladeserver-1 {
+    background-image: url("../images/cisco_ucs_blade_server_1.svg");
+    background-size: cover;
+    text-align: left;
+    border: 1px solid #000 !important;
+    cursor: default;
+}
+
+.blade-cisco-ucs-fullbladeserver-0 {
+    background-image: url("../images/cisco_ucs_blade_server_0.svg");
+    background-size: cover;
+    text-align: left;
+    border: 1px solid #000 !important;
+    cursor: default;
 }
 
 .blade-hp-c7000-fullbladeserver-0 {
@@ -188,6 +221,13 @@ body {
     grid-column-end: span 2;
 }
 
+.blade-cisco-ucs-empty-slot {
+    background-color: #555;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #000;
+}
+
 .use-hint .hw-tooltiptext {
     visibility: hidden;
     width: 320px;
@@ -223,11 +263,17 @@ body {
     padding-left: 5px;
 }
 
-.blade div.hw-title {
+.blade.hp-c7000 div.hw-title {
     /* color: #cfcfcf; */
     padding: 1px;
     writing-mode: vertical-lr;
     font-size: 14px;
+}
+
+.blade.cisco-ucs div.hw-title {
+    /* color: #cfcfcf; */
+    padding: 1px;
+    font-size: 18px;
 }
 
 .hw-ctr-24 {
@@ -254,6 +300,13 @@ body {
     display: grid;
     grid-template-columns: 28px;
     grid-template-rows: 20px 40px 40px;
+}
+
+.cisco-ucs-ctr-1 {
+    display: grid;
+    grid-template-columns: 40px 86px;
+    grid-template-rows: 24px;
+    /* line-height: 30px; */
 }
 
 .use-hint.focus {

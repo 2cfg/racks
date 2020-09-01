@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="cisco_ucs_blade_server_1.svg"
+   viewBox="0 0 126 30"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   width="126"
+   height="30">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient2879">
+      <stop
+         id="stop2881"
+         style="stop-color:#7c7c7c"
+         offset="0" />
+      <stop
+         id="stop2883"
+         style="stop-color:#252525"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2879"
+       id="linearGradient4810"
+       gradientUnits="userSpaceOnUse"
+       x1="567.48999"
+       y1="313.10001"
+       x2="567.48999"
+       y2="349.75"
+       gradientTransform="translate(-221.71501,-414.07462)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2879"
+       id="linearGradient4812"
+       gradientUnits="userSpaceOnUse"
+       x1="567.48999"
+       y1="313.10001"
+       x2="567.48999"
+       y2="349.75"
+       gradientTransform="translate(-221.71501,-347.12462)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="0"
+     pagecolor="#ffffff"
+     inkscape:window-height="1003"
+     inkscape:zoom="7.919596"
+     inkscape:window-x="0"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="51.522625"
+     inkscape:cy="6.4106121"
+     inkscape:window-width="1920"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     transform="translate(-24.972,-378.24199)">
+    <g
+       id="g1171"
+       transform="matrix(0.84974374,0,0,0.85714286,49.015063,103.97725)">
+      <rect
+         transform="rotate(90)"
+         id="rect4993"
+         style="fill:#666666;stroke-width:0.9156329"
+         height="148.28"
+         width="35"
+         y="-119.98551"
+         x="319.97552" />
+      <rect
+         transform="rotate(90)"
+         x="339.22141"
+         y="-110.64251"
+         width="13.244"
+         height="63.917"
+         style="fill:#1a1a1a"
+         id="rect5001" />
+      <rect
+         transform="rotate(90)"
+         x="342.39139"
+         y="-64.002525"
+         width="7.1978002"
+         height="9.7890997"
+         style="fill:#898989;fill-opacity:1"
+         id="rect5003" />
+      <rect
+         transform="rotate(90)"
+         x="342.68137"
+         y="-50.612507"
+         width="2.3032999"
+         height="2.3032999"
+         style="fill:#00ff00"
+         id="rect5005" />
+      <rect
+         transform="rotate(90)"
+         x="347.00137"
+         y="-50.612507"
+         width="2.3032999"
+         height="2.3032999"
+         style="fill:#00ff00"
+         id="rect5007" />
+      <rect
+         transform="rotate(90)"
+         id="rect5009"
+         style="fill:#999999"
+         height="8.5506001"
+         width="11.808"
+         y="-109.72254"
+         x="339.94138" />
+      <rect
+         transform="rotate(90)"
+         x="341.40497"
+         y="-100.97462"
+         width="8.7542"
+         height="36.645"
+         style="fill:url(#linearGradient4810)"
+         id="rect5011" />
+      <rect
+         transform="rotate(90)"
+         x="339.22141"
+         y="-43.692509"
+         width="13.244"
+         height="63.917"
+         style="fill:#1a1a1a"
+         id="rect5019" />
+      <rect
+         transform="rotate(90)"
+         x="342.39139"
+         y="2.9474773"
+         width="7.1978002"
+         height="9.7890997"
+         style="fill:#898989;fill-opacity:1"
+         id="rect5021" />
+      <rect
+         transform="rotate(90)"
+         x="342.68137"
+         y="16.337492"
+         width="2.3032999"
+         height="2.3032999"
+         style="fill:#00ff00"
+         id="rect5023" />
+      <rect
+         transform="rotate(90)"
+         x="347.00137"
+         y="16.337492"
+         width="2.3032999"
+         height="2.3032999"
+         style="fill:#00ff00"
+         id="rect5025" />
+      <rect
+         transform="rotate(90)"
+         id="rect5027"
+         style="fill:#999999"
+         height="8.5506001"
+         width="11.808"
+         y="-42.772526"
+         x="339.94138" />
+      <rect
+         transform="rotate(90)"
+         x="341.40497"
+         y="-34.024601"
+         width="8.7542"
+         height="36.645"
+         style="fill:url(#linearGradient4812)"
+         id="rect5029" />
+      <g
+         transform="translate(0,-1.354605)"
+         id="g1095">
+        <rect
+           x="327.38913"
+           y="-104.79092"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5039"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-99.430908"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5041"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-94.060913"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5043"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-88.700928"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5045"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-83.330933"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5047"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-77.970917"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5049"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-72.600922"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5051"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-67.230927"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5053"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-61.870914"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5055"
+           transform="rotate(90)" />
+        <rect
+           x="327.38913"
+           y="-56.500919"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5057"
+           transform="rotate(90)" />
+      </g>
+      <g
+         transform="rotate(90,322.41473,97.510819)"
+         id="g5093">
+        <rect
+           x="547.23999"
+           y="315.34"
+           width="2.4430001"
+           height="2.2393999"
+           ry="0"
+           rx="82.160004"
+           style="fill:#00ff00"
+           id="rect5095" />
+        <rect
+           x="547.23999"
+           y="321.25"
+           width="2.4430001"
+           height="2.2393999"
+           ry="0"
+           rx="82.160004"
+           style="fill:#00ff00"
+           id="rect5097" />
+        <rect
+           x="547.23999"
+           y="327.14999"
+           width="2.4430001"
+           height="2.2393999"
+           ry="0"
+           rx="82.160004"
+           style="fill:#00ff00"
+           id="rect5099" />
+      </g>
+      <circle
+         transform="rotate(90)"
+         r="4.7982244"
+         cy="-112.3693"
+         cx="329.54196"
+         id="path1106"
+         style="fill:#00ff00;fill-opacity:1;stroke-width:1.31034482" />
+      <g
+         transform="translate(-1.3889599)"
+         id="g1120">
+        <rect
+           x="326.03452"
+           y="-38.595131"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5035-6"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="-33.225136"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5037-7"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="-27.855143"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5039-5"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="-22.495127"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5041-3"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="-17.125132"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5043-5"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="-11.765145"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5045-6"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="-6.3951507"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5047-2"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="-1.0351348"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5049-9"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="4.3348603"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5051-1"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="9.7048559"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5053-2"
+           transform="rotate(90)" />
+        <rect
+           x="326.03452"
+           y="15.064872"
+           width="10.941"
+           height="3.7428999"
+           style="fill:#000000"
+           id="rect5055-7"
+           transform="rotate(90)" />
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata1056">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title></dc:title>
+        <dc:date>2008-12-17T09:54:26</dc:date>
+        <dc:description>This is an HP C7000 Blade</dc:description>
+        <dc:source>https://openclipart.org/detail/20733/hp-c7000-by-kingofsnakes</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>kingofsnakes</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>blade</rdf:li>
+            <rdf:li>c7000</rdf:li>
+            <rdf:li>computer</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

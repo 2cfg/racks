@@ -100,8 +100,12 @@ var RackBuilder = (function namespace() {
             let resClass = 'hw-ctr-' + size*24;
             c.classList.add(resClass);
            }
-           else if (type == "bladeserver") {
+           else if (type == "hp-c7000-bladeserver") {
             let resClass = 'blade-ctr-' + size;
+            c.classList.add(resClass);
+           }
+           else if (type == "cisco-ucs-bladeserver") {
+            let resClass = 'cisco-ucs-ctr-' + size;
             c.classList.add(resClass);
            }
            
@@ -273,38 +277,57 @@ var RackBuilder = (function namespace() {
             container.classList.add(bladeClass);
             rackObject.appendChild(container);
 
-            for (let i = 1; i < item.childsize * 2 + 1; i++) {
-                let blade = item.childs[i];
+            if (item.class == "hp-c7000") {
+               for (let i = 1; i < item.childsize * 2 + 1; i++) {
+                  let blade = item.childs[i];
 
-                if (!blade) {
-                    container.appendChild(this.addEmptyBladeSlot(item.class));
-                    i++;
-                }
-                else if (blade.type == "fullbladeserver") {
-                    let slot = blade.units[0];
-                    let view = this.addFullBladeServer(blade, slot);
-                    container.appendChild(view);
-                    i++;
-                }
-                else if (blade.type == "halfbladeserver") {
-                    let slot = blade.units[0];
-                    let side = i % 2 == 0 ? "b" : "a";
-                    let view = this.addHalfBladeServer(blade, side, slot);
-                    container.appendChild(view);
-                }
+                  if (!blade) {
+                     container.appendChild(this.addEmptyBladeSlot(item.class));
+                     i++;
+                  }
+                  else if (blade.type == "fullbladeserver") {
+                     let slot = blade.units[0];
+                     let view = this.addFullBladeServer(blade, slot);
+                     container.appendChild(view);
+                     i++;
+                  }
+                  else if (blade.type == "halfbladeserver") {
+                     let slot = blade.units[0];
+                     let side = i % 2 == 0 ? "b" : "a";
+                     let view = this.addHalfBladeServer(blade, side, slot);
+                     container.appendChild(view);
+                  }
+               }
+            } else if (item.class == "cisco-ucs") {
+               for (let i = 1; i < item.childsize + 1; i++) {
+                  let blade = item.childs[i];
+                  if (!blade) {
+                     container.appendChild(this.addEmptyBladeSlot(item.class));
+                  }
+                  else {
+                     let slot = blade.units[0];
+                     let view = this.addFullBladeServer(blade, slot);
+                     container.appendChild(view);
+                  }
+               }
+
             }
+
         }
 
         addFullBladeServer(blade, slot) {
             let hw = document.createElement('div');
             hw.classList.add('blade-' + blade.class + '-fullbladeserver-' + blade.powerstate);
             hw.classList.add('blade');
+            hw.classList.add(blade.class)
             // hw.innerText = "S " + blade.id;
             
-            let hwCtr = this.getHardwareInnerViewContainer("bladeserver", 2);
+            let hwCtr = this.getHardwareInnerViewContainer(blade.class + "-bladeserver", blade.size);
             hw.appendChild(hwCtr);
 
-            hwCtr.appendChild(document.createElement('div')); //empty row
+            if (blade.class == "hp-c7000") {
+               hwCtr.appendChild(document.createElement('div')); //empty row
+            }
             // add title
             hwCtr.appendChild(this.getHardwareTitle(blade.id));
 
@@ -331,8 +354,9 @@ var RackBuilder = (function namespace() {
             let hw = document.createElement('div');
             hw.classList.add('blade-' + blade.class + '-halfbladeserver-' + side + '-' + blade.powerstate);
             hw.classList.add('blade');
+            hw.classList.add(blade.class);
             
-            let hwCtr = this.getHardwareInnerViewContainer("bladeserver", 1);
+            let hwCtr = this.getHardwareInnerViewContainer(blade.class + "-bladeserver", blade.size);
             hw.appendChild(hwCtr);
 
             hwCtr.appendChild(document.createElement('div')); //empty row
@@ -857,6 +881,48 @@ function fetchHardwareList() {
             "size":1,
             "units":[
                "8b"
+            ],
+            "pdu":[
+               
+            ],
+            "maxdrive": 1,
+            "drives":[
+            ],
+            "powerstate":1
+         },
+         {
+            "id":554,
+            "type":"bladechassis",
+            "class":"cisco-ucs",
+            "size":6,
+            "childsize":8,
+            "units":[
+               11,
+               12,
+               13,
+               14,
+               15,
+               16
+            ],
+            "pdu":[
+               "102/2/1",
+               "102/2/3",
+               "202/2/1",
+               "202/2/3"
+            ],
+            "maxdrive": 0,
+            "drives":[
+          ],
+            "powerstate":1
+         },
+         {
+            "id":665,
+            "type":"fullbladeserver",
+            "class":"cisco-ucs",
+            "chassisid":554,
+            "size":1,
+            "units":[
+               "1"
             ],
             "pdu":[
                
