@@ -108,6 +108,28 @@ var RackBuilder = (function namespace() {
            return c;
         }
 
+        getItemHint(index, item, title) {
+         let hint = document.createElement('div');
+         hint.classList.add("hw-tooltiptext");
+         
+         let str1= document.createElement('div');
+         str1.innerText = title;
+         hint.appendChild(str1);
+
+         if (item.drives.length > 0) {
+            let str2 = document.createElement('div');
+            let tmpstr = "Диски:<br>";
+            item.drives.forEach(drive => { 
+               tmpstr += drive.type + ' ' + drive.capacity + '<br>';
+            });
+
+            str2.innerHTML = tmpstr;
+            hint.appendChild(str2);
+         }
+
+         return hint;
+      }
+
         addUnitServer(item, index, view) {
             // rackObject = document.createElement('div');
             // rackObject.classList.add("rack-object")
@@ -133,10 +155,7 @@ var RackBuilder = (function namespace() {
             let drives = item.drives;
             
             if (drives.length > 0) {
-               console.log(item.id);
-               console.log(drives);
                let ctr = this.createDiskDriveContainer(item.size, item.maxdrive);
-               console.log(ctr);
                drives.forEach(drive => { 
                   ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
                });
@@ -144,9 +163,15 @@ var RackBuilder = (function namespace() {
             }
 
             // add hint
-            let hint = document.createElement('span');
-            hint.innerText = "Юнит: " + index + ", Сервер: S" + item.id;
-            hint.classList.add("hw-tooltiptext");
+            let unitsstr = index;
+            if (item.size > 1) {
+               let pos = index;
+               for (let i = item.size; i > 1; i--) {
+                  unitsstr += "," + --pos;
+               }
+            }
+
+            let hint = this.getItemHint(index, item, "Юнит: " + unitsstr + "; Сервер: S" + item.id);
             hw.classList.add("use-hint");
             hw.appendChild(hint);
 
@@ -178,9 +203,7 @@ var RackBuilder = (function namespace() {
             hwCtr.appendChild(this.getHardwareTitle(item.id));
 
             // add hint
-            let hint = document.createElement('span');
-            hint.innerText = "Юнит: " + index + ", Коммутатор: S" + item.id;
-            hint.classList.add("hw-tooltiptext");
+            let hint = this.getItemHint(index, item, "Юнит: " + index + ", Коммутатор: S" + item.id);
             hw.classList.add("use-hint");
             hw.appendChild(hint);
 
@@ -252,7 +275,6 @@ var RackBuilder = (function namespace() {
 
             for (let i = 1; i < item.childsize * 2 + 1; i++) {
                 let blade = item.childs[i];
-               //  console.log(item.childs)
 
                 if (!blade) {
                     container.appendChild(this.addEmptyBladeSlot(item.class));
@@ -276,15 +298,29 @@ var RackBuilder = (function namespace() {
         addFullBladeServer(blade, slot) {
             let hw = document.createElement('div');
             hw.classList.add('blade-' + blade.class + '-fullbladeserver-' + blade.powerstate);
+            hw.classList.add('blade');
             // hw.innerText = "S " + blade.id;
             
             let hwCtr = this.getHardwareInnerViewContainer("bladeserver", 2);
             hw.appendChild(hwCtr);
 
+            hwCtr.appendChild(document.createElement('div')); //empty row
+            // add title
+            hwCtr.appendChild(this.getHardwareTitle(blade.id));
+
+            // add drives
+            let drives = blade.drives;
+            
+            if (drives.length > 0) {
+               let ctr = this.createDiskDriveContainer(blade.size, blade.maxdrive);
+               drives.forEach(drive => { 
+                  ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
+               });
+               hwCtr.appendChild(ctr);
+            }
+
             // add hint
-            let hint = document.createElement('span');
-            hint.innerText = "Слот: " + slot + ", Blade-сервер: S" + blade.id;
-            hint.classList.add("hw-tooltiptext");
+            let hint = this.getItemHint(slot, blade, "Слот: " + slot + ", Blade-сервер: S" + blade.id);
             hw.classList.add("use-hint");
             hw.appendChild(hint);
 
@@ -294,14 +330,28 @@ var RackBuilder = (function namespace() {
         addHalfBladeServer(blade, side, slot) {
             let hw = document.createElement('div');
             hw.classList.add('blade-' + blade.class + '-halfbladeserver-' + side + '-' + blade.powerstate);
-            // hw.innerText = "S " + blade.id;
+            hw.classList.add('blade');
+            
             let hwCtr = this.getHardwareInnerViewContainer("bladeserver", 1);
             hw.appendChild(hwCtr);
 
+            hwCtr.appendChild(document.createElement('div')); //empty row
+            // add title
+            hwCtr.appendChild(this.getHardwareTitle(blade.id));
+
+            // add drives
+            let drives = blade.drives;
+            
+            if (drives.length > 0) {
+               let ctr = this.createDiskDriveContainer(blade.size, blade.maxdrive);
+               drives.forEach(drive => { 
+                  ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
+               });
+               hwCtr.appendChild(ctr);
+            }
+
             // add hint
-            let hint = document.createElement('span');
-            hint.innerText = "Слот: " + slot + ", Blade-сервер: S" + blade.id;
-            hint.classList.add("hw-tooltiptext");
+            let hint = this.getItemHint(slot, blade, "Слот: " + slot + ", Blade-сервер: S" + blade.id);
             hw.classList.add("use-hint");
             hw.appendChild(hint);
 
@@ -357,7 +407,7 @@ function fetchRack() {
     return JSON.parse(`{
         "room":"r08",
         "name":"RA03",
-        "class":"units",
+        "type":"units",
         "size":48
      }`);
 }
@@ -393,8 +443,8 @@ function fetchHardwareList() {
            ],
            "maxdrive": 4,
            "drives":[
-            {"type": "ssd", "capacity": "120G"},
-            {"type": "hdd", "capacity": "1Tb"}
+            {"type": "sata-ssd", "capacity": "120G"},
+            {"type": "sata-hdd", "capacity": "1Tb"}
            ],
            "powerstate":0
         },
@@ -410,7 +460,7 @@ function fetchHardwareList() {
            ],
            "maxdrive": 4,
            "drives":[
-            {"type": "ssd", "capacity": "500G"}
+            {"type": "sata-ssd", "capacity": "500G"}
          ],
            "powerstate":1
         },
@@ -426,7 +476,7 @@ function fetchHardwareList() {
            ],
            "maxdrive": 4,
            "drives":[
-            {"type": "hdd", "capacity": "1Tb"}
+            {"type": "sata-hdd", "capacity": "1Tb"}
          ],
            "powerstate":1
         },
@@ -442,7 +492,7 @@ function fetchHardwareList() {
            ],
            "maxdrive": 4,
            "drives":[
-            {"type": "ssd", "capacity": "120G"}
+            {"type": "sata-ssd", "capacity": "120G"}
          ],
            "powerstate":1
         },
@@ -458,7 +508,7 @@ function fetchHardwareList() {
            ],
            "maxdrive": 4,
            "drives":[
-            {"type": "hdd", "capacity": "1Tb"}
+            {"type": "sata-hdd", "capacity": "1Tb"}
          ],
            "powerstate":1
         },
@@ -476,14 +526,14 @@ function fetchHardwareList() {
            ],
            "maxdrive": 8,
            "drives":[
-            {"type": "ssd", "capacity": "500G"},
-            {"type": "hdd", "capacity": "1Tb"},
-            {"type": "ssd", "capacity": "500G"},
-            {"type": "hdd", "capacity": "1Tb"},
-            {"type": "ssd", "capacity": "1Tb"},
-            {"type": "hdd", "capacity": "1Tb"},
-            {"type": "hdd", "capacity": "1Tb"},
-            {"type": "hdd", "capacity": "1Tb"}
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"},
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"},
+            {"type": "sata-ssd", "capacity": "1Tb"},
+            {"type": "sata-hdd", "capacity": "1Tb"},
+            {"type": "sata-hdd", "capacity": "1Tb"},
+            {"type": "sata-hdd", "capacity": "1Tb"}
          ],
            "powerstate":1
         },
@@ -651,6 +701,8 @@ function fetchHardwareList() {
            ],
            "maxdrive": 2,
            "drives":[
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"}
          ],
            "powerstate":1
         },
@@ -668,6 +720,8 @@ function fetchHardwareList() {
            ],
            "maxdrive": 2,
            "drives":[
+            {"type": "sas-hdd", "capacity": "146G"},
+            {"type": "sas-ssd", "capacity": "480G"}
          ],
            "powerstate":0
         },
@@ -685,9 +739,29 @@ function fetchHardwareList() {
            ],
            "maxdrive": 2,
            "drives":[
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-ssd", "capacity": "500G"}
          ],
            "powerstate":1
         },
+        {
+         "id":536,
+         "type":"fullbladeserver",
+         "class":"hp-c7000",
+         "chassisid":552,
+         "size":2,
+         "units":[
+            6
+         ],
+         "pdu":[
+            
+         ],
+         "maxdrive": 2,
+         "drives":[
+          {"type": "sata-hdd", "capacity": "500G"}
+       ],
+         "powerstate":0
+      },
         {
            "id":440,
            "type":"halfbladeserver",
@@ -736,6 +810,7 @@ function fetchHardwareList() {
            ],
            "maxdrive": 1,
            "drives":[
+            {"type": "sata-ssd", "capacity": "500G"}
          ],
            "powerstate":0
         },
@@ -770,6 +845,7 @@ function fetchHardwareList() {
            ],
            "maxdrive": 1,
            "drives":[
+            {"type": "sata-hdd", "capacity": "1Tb"}
          ],
            "powerstate":1
         },

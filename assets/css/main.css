@@ -193,7 +193,7 @@ body {
     width: 320px;
     background-color: rgb(255, 238, 181);
     color: #000;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 6px;
     padding: 5px 0;
     writing-mode: horizontal-tb;
@@ -201,11 +201,14 @@ body {
   
     /* Position the tooltip */
     position: absolute;
+    left: 115%;
+    top: 0%;
     z-index: 1;
   }
 
 .use-hint {
     border: 1px solid transparent;
+    position: relative;
 }
 
 .use-hint:hover {
@@ -218,6 +221,13 @@ body {
     /* color: #cfcfcf; */
     padding: 1px;
     padding-left: 5px;
+}
+
+.blade div.hw-title {
+    /* color: #cfcfcf; */
+    padding: 1px;
+    writing-mode: vertical-lr;
+    font-size: 14px;
 }
 
 .hw-ctr-24 {
@@ -269,23 +279,83 @@ body {
     padding: 1px;
 }
 
-.disk-ssd {
+.blade .disk-ctr-2-2 {
+    display: grid;
+    grid-template-columns: 36px;
+    grid-template-rows: 11px 11px;
+    grid-row-gap: 2px;
+    padding: 1px;
+    writing-mode: vertical-lr;
+    font-size: 8px;
+}
+
+.blade .disk-ctr-1-1 {
+    display: grid;
+    grid-template-columns: 36px;
+    grid-template-rows: 11px;
+    grid-column-gap: 1px;
+    padding: 1px;
+    writing-mode: vertical-lr;
+    font-size: 10px;
+}
+
+
+
+.blade .disk-sata-ssd {
+    background-color: #55c9ff;
+    font-size: 8px;
+    text-align: center;
+    line-height: normal;
+}
+
+.blade .disk-sata-hdd {
+    background-color: #3dc27f;
+    font-size: 8px;
+    text-align: center;
+    line-height: normal;
+}
+
+.blade .disk-sas-hdd {
+    background-color: #ff55aa;
+    font-size: 8px;
+    text-align: center;
+    line-height: normal;
+}
+
+.blade .disk-sas-ssd {
+    background-color: #aa8166;
+    font-size: 8px;
+    text-align: center;
+    line-height: normal;
+}
+
+.disk-sata-ssd {
     background-color: #55c9ff;
     font-size: 14px;
     text-align: center;
     line-height: normal;
 }
 
-.disk-hdd {
+.disk-sata-hdd {
     background-color: #3dc27f;
     font-size: 14px;
     text-align: center;
     line-height: normal;
 }
 
-/* .rack-object {
+.disk-sas-hdd {
+    background-color: #ff55aa;
+    font-size: 14px;
+    text-align: center;
+    line-height: normal;
+}
 
-} */
+.disk-sas-ssd {
+    background-color: #fff455;
+    font-size: 14px;
+    text-align: center;
+    line-height: normal;
+}
 
 .tor1-view {
     /* border: 1px solid black; */
