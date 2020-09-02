@@ -23,7 +23,18 @@ var RackBuilder = (function namespace() {
                     }
                     else if (hw.type == "bladechassis") {
                         this.unitsMap[unit] = hw;
-                        hw.childs = new Array(hw.childsize * 2 + 1);
+                        let childsize = 0;
+                        if (!hw.hasOwnProperty("childsize")) {
+                           if (hw.class == "hp-c7000") {
+                              hw.childsize = 16
+                              childsize = hw.childsize * 2 + 1; 
+                           }
+                           else if (hw.class == "cisco-ucs") {
+                              hw.childsize = 8
+                              childsize = hw.childsize + 1;
+                           }
+                        }
+                        hw.childs = new Array(childsize);
                     }
                 });
 
@@ -39,7 +50,7 @@ var RackBuilder = (function namespace() {
                     let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
                     if (chassis) {
                         hw.units.forEach(unit => {
-                            chassis.childs[unit * 2 -1] = hw;
+                            chassis.childs[unit * 2 - 1] = hw;
                             chassis.childs[unit * 2] = hw;
                         });
                     }
@@ -743,7 +754,6 @@ function fetchHardwareList() {
            "type":"bladechassis",
            "class":"hp-c7000",
            "size":10,
-           "childsize":16,
            "units":[
               1,
               2,
@@ -951,7 +961,6 @@ function fetchHardwareList() {
             "type":"bladechassis",
             "class":"cisco-ucs",
             "size":6,
-            "childsize":8,
             "units":[
                11,
                12,
