@@ -9,6 +9,11 @@ var RackBuilder = (function namespace() {
             this.unitsMap = null;
         }
 
+      //   parse blade type depending on place
+      //   parseBladeTypes() {
+
+      //   }
+
         createUnitsMap() {
             this.unitsMap = new Array(this.rack.size + 1);
             this.hardwareList.forEach(hw => {
@@ -22,7 +27,15 @@ var RackBuilder = (function namespace() {
                     }
                 });
 
-                if (hw.type == "fullbladeserver") {
+                if (hw.type == "ucsbladeserver") {
+                  let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
+                  if (chassis) {
+                      hw.units.forEach(unit => {
+                          chassis.childs[unit] = hw;
+                      });
+                  }
+              } 
+              else if (hw.type == "fullbladeserver") {
                     let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
                     if (chassis) {
                         hw.units.forEach(unit => {
@@ -30,7 +43,6 @@ var RackBuilder = (function namespace() {
                             chassis.childs[unit * 2] = hw;
                         });
                     }
-                  //   console.log(chassis.childs)
                 }
                 else if (hw.type == "halfbladeserver") {
                     let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
@@ -47,7 +59,6 @@ var RackBuilder = (function namespace() {
                             
                         });
                     }
-                  //   console.log(chassis.childs)
                 }
             });
         }
@@ -56,8 +67,6 @@ var RackBuilder = (function namespace() {
             console.log("builder initialize")
 
             this.frontview = document.getElementById(frontview);
-            // this.rack = this.fetchRack();
-            // this.hardwareList = this.fetchHardwareList();
             this.createUnitsMap();
         }
 
@@ -207,7 +216,15 @@ var RackBuilder = (function namespace() {
             hwCtr.appendChild(this.getHardwareTitle(item.id));
 
             // add hint
-            let hint = this.getItemHint(index, item, "Юнит: " + index + ", Коммутатор: S" + item.id);
+            let unitsstr = index;
+            if (item.size > 1) {
+               let pos = index;
+               for (let i = item.size; i > 1; i--) {
+                  unitsstr += "," + --pos;
+               }
+            }
+
+            let hint = this.getItemHint(index, item, "Юнит: " + unitsstr + "; Коммутатор: S" + item.id);
             hw.classList.add("use-hint");
             hw.appendChild(hint);
 
@@ -317,7 +334,7 @@ var RackBuilder = (function namespace() {
 
         addFullBladeServer(blade, slot) {
             let hw = document.createElement('div');
-            hw.classList.add('blade-' + blade.class + '-fullbladeserver-' + blade.powerstate);
+            hw.classList.add('blade-' + blade.class + '-' + blade.type + '-' + blade.powerstate);
             hw.classList.add('blade');
             hw.classList.add(blade.class)
             // hw.innerText = "S " + blade.id;
@@ -917,7 +934,7 @@ function fetchHardwareList() {
          },
          {
             "id":665,
-            "type":"fullbladeserver",
+            "type":"ucsbladeserver",
             "class":"cisco-ucs",
             "chassisid":554,
             "size":1,
@@ -927,7 +944,81 @@ function fetchHardwareList() {
             "pdu":[
                
             ],
-            "maxdrive": 1,
+            "maxdrive": 2,
+            "drives":[
+               {"type": "sata-ssd", "capacity": "500G"},
+               {"type": "sata-ssd", "capacity": "500G"}
+            ],
+            "powerstate":1
+         },
+         {
+            "id":666,
+            "type":"ucsbladeserver",
+            "class":"cisco-ucs",
+            "chassisid":554,
+            "size":1,
+            "units":[
+               "2"
+            ],
+            "pdu":[
+               
+            ],
+            "maxdrive": 2,
+            "drives":[
+               {"type": "sas-ssd", "capacity": "2Tb"}
+            ],
+            "powerstate":0
+         },
+         {
+            "id":667,
+            "type":"ucsbladeserver",
+            "class":"cisco-ucs",
+            "chassisid":554,
+            "size":1,
+            "units":[
+               "5"
+            ],
+            "pdu":[
+               
+            ],
+            "maxdrive": 2,
+            "drives":[
+               {"type": "sata-hdd", "capacity": "1Tb"},
+               {"type": "sas-hdd", "capacity": "146G"}
+            ],
+            "powerstate":1
+         }
+         ,
+         {
+            "id":668,
+            "type":"ucsbladeserver",
+            "class":"cisco-ucs",
+            "chassisid":554,
+            "size":1,
+            "units":[
+               "7"
+            ],
+            "pdu":[
+               
+            ],
+            "maxdrive": 2,
+            "drives":[
+            ],
+            "powerstate":0
+         },
+         {
+            "id":690,
+            "type":"switch",
+            "size":2,
+            "units":[
+               18,
+               17
+            ],
+            "pdu":[
+               "102/2/2",
+               "202/2/3"
+            ],
+            "maxdrive": 0,
             "drives":[
             ],
             "powerstate":1

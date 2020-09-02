@@ -100,7 +100,14 @@ body {
 .switch1u {
     background-image: url("../images/switch_1u_rear.svg");
     background-size: cover;
+    /* color: #00a2ff !important; */
 
+}
+
+.switch2u {
+    background-image: url("../images/switch_sfp_2u_rear.svg");
+    background-size: cover;
+    /* color: #002f4b !important; */
 }
 
 .blade-hp-c7000-10u {
@@ -136,19 +143,19 @@ body {
     grid-template-rows: repeat(4, 30px);
 }
 
-.blade-cisco-ucs-fullbladeserver-1 {
+.blade-cisco-ucs-ucsbladeserver-1 {
     background-image: url("../images/cisco_ucs_blade_server_1.svg");
     background-size: cover;
     text-align: left;
-    border: 1px solid #000 !important;
+    /* border: 1px solid #000 !important; */
     cursor: default;
 }
 
-.blade-cisco-ucs-fullbladeserver-0 {
+.blade-cisco-ucs-ucsbladeserver-0 {
     background-image: url("../images/cisco_ucs_blade_server_0.svg");
     background-size: cover;
     text-align: left;
-    border: 1px solid #000 !important;
+    /* border: 1px solid #000 !important; */
     cursor: default;
 }
 
@@ -235,7 +242,7 @@ body {
     color: #000;
     /* text-align: center; */
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 5px;
     writing-mode: horizontal-tb;
     font-size: 18px;
   
@@ -273,7 +280,7 @@ body {
 .blade.cisco-ucs div.hw-title {
     /* color: #cfcfcf; */
     padding: 1px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .hw-ctr-24 {
@@ -306,6 +313,7 @@ body {
     display: grid;
     grid-template-columns: 40px 86px;
     grid-template-rows: 24px;
+    
     /* line-height: 30px; */
 }
 
@@ -352,32 +360,39 @@ body {
     font-size: 10px;
 }
 
-
+.cisco-ucs .disk-ctr-1-2 {
+    display: grid;
+    grid-template-columns: 36px 36px;
+    grid-template-rows: 14px;
+    grid-column-gap: 1px;
+    padding: 1px;
+    /* font-size: 14px !important; */
+}
 
 .blade .disk-sata-ssd {
     background-color: #55c9ff;
-    font-size: 8px;
+    font-size: 9px;
     text-align: center;
     line-height: normal;
 }
 
 .blade .disk-sata-hdd {
     background-color: #3dc27f;
-    font-size: 8px;
+    font-size: 9px;
     text-align: center;
     line-height: normal;
 }
 
 .blade .disk-sas-hdd {
     background-color: #ff55aa;
-    font-size: 8px;
+    font-size: 9px;
     text-align: center;
     line-height: normal;
 }
 
 .blade .disk-sas-ssd {
     background-color: #aa8166;
-    font-size: 8px;
+    font-size: 9px;
     text-align: center;
     line-height: normal;
 }
