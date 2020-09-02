@@ -609,6 +609,36 @@ function fetchHardwareList() {
            "powerstate":0
         },
         {
+         "id":688,
+         "type":"unitserver",
+         "size":3,
+         "units":[
+            42,43,44
+         ],
+         "pdu":[
+            "102/2/1"
+         ],
+         "maxdrive": 8,
+         "drives":[
+       ],
+         "powerstate":1
+      },
+      {
+         "id":689,
+         "type":"unitserver",
+         "size":4,
+         "units":[
+            31,32,33,34
+         ],
+         "pdu":[
+            "102/2/1"
+         ],
+         "maxdrive": 12,
+         "drives":[
+       ],
+         "powerstate":1
+      },
+        {
            "id":392,
            "type":"unitserver",
            "size":1,

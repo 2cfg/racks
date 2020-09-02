@@ -63,6 +63,16 @@ body {
     grid-row-end: span 2;
 }
 
+.size-3u {
+    grid-column-start: 2;
+    grid-row-end: span 3;
+}
+
+.size-4u {
+    grid-column-start: 2;
+    grid-row-end: span 4;
+}
+
 .size-10u {
     grid-column-start: 2;
     grid-row-end: span 10;
@@ -93,6 +103,30 @@ body {
 
 .server2u-1 {
     background-image: url("../images/server_2u_front_1.svg");
+    background-size: cover;
+
+}
+
+.server3u-0 {
+    background-image: url("../images/server_3u_front_0.svg");
+    background-size: cover;
+
+}
+
+.server3u-1 {
+    background-image: url("../images/server_3u_front_1.svg");
+    background-size: cover;
+
+}
+
+.server4u-0 {
+    background-image: url("../images/server_4u_front_0.svg");
+    background-size: cover;
+
+}
+
+.server4u-1 {
+    background-image: url("../images/server_4u_front_1.svg");
     background-size: cover;
 
 }
