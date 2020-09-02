@@ -446,10 +446,11 @@ var RackBuilder = (function namespace() {
 // example data
 function fetchRack() {
     return JSON.parse(`{
-        "room":"r08",
+        "room":"110",
         "name":"RA03",
         "type":"units",
-        "size":48
+        "size":48,
+        "switch": [103,163]
      }`);
 }
 // example data
@@ -470,7 +471,11 @@ function fetchHardwareList() {
            "maxdrive": 0,
            "drives":[
            ],
-           "powerstate":1
+           "powerstate":1,
+           "cross": [
+              "Ethernet185/1/8 Крос №00296 s263:p1",
+              "Ethernet185/1/13 Крос №00301 s555:p1"
+           ]
         },
         {
            "id":455,
@@ -487,7 +492,11 @@ function fetchHardwareList() {
             {"type": "sata-ssd", "capacity": "120G"},
             {"type": "sata-hdd", "capacity": "1Tb"}
            ],
-           "powerstate":0
+           "powerstate":0,
+           "cross": [
+            "p1 Mac: 00:25:90:00:fb:02 Крос №00477 Fex105:Ethernet105/1/31",
+            "p2 Mac: 00:25:90:00:fb:03"
+           ]
         },
         {
            "id":443,
@@ -1057,40 +1066,46 @@ function fetchHardwareList() {
     `);
 }
 
-rack = fetchRack();
+let rack = fetchRack();
 hardwareList = fetchHardwareList();
 
-let builder = new RackBuilder(rack, hardwareList);
-builder.init("frontview");
-builder.createFrontView();
+
+if (rack.type == "units") {
+   let builder = new RackBuilder(rack, hardwareList);
+   builder.init("frontview");
+   builder.createFrontView();
+} 
+else if (rack.class == "towers") {
+   // let builder = new TowerRackBuilder(rack, hardwareList);
+}
 
 
-let rel = document.getElementById("reltest");
+// let rel = document.getElementById("reltest");
 
-rel.addEventListener("mouseover", function(e) {
-   // const parent = e.target.parentElement;
-   hw = document.getElementById('hw-443');
-   hw.classList.add('focus');
-});
+// rel.addEventListener("mouseover", function(e) {
+//    // const parent = e.target.parentElement;
+//    hw = document.getElementById('hw-443');
+//    hw.classList.add('focus');
+// });
    
-rel.addEventListener("mouseout", function(e) {
-   // e.target.classList.remove("active");
-   hw = document.getElementById('hw-443');
-   hw.classList.remove('focus');
-});
+// rel.addEventListener("mouseout", function(e) {
+//    // e.target.classList.remove("active");
+//    hw = document.getElementById('hw-443');
+//    hw.classList.remove('focus');
+// });
 
-let rel2 = document.getElementById("reltest2");
+// let rel2 = document.getElementById("reltest2");
 
-rel2.addEventListener("mouseover", function(e) {
-   // const parent = e.target.parentElement;
-   hw = document.getElementById('hw-346');
-   hw.classList.add('focus');
-});
+// rel2.addEventListener("mouseover", function(e) {
+//    // const parent = e.target.parentElement;
+//    hw = document.getElementById('hw-346');
+//    hw.classList.add('focus');
+// });
    
-rel2.addEventListener("mouseout", function(e) {
-   // e.target.classList.remove("active");
-   hw = document.getElementById('hw-346');
-   hw.classList.remove('focus');
-});
+// rel2.addEventListener("mouseout", function(e) {
+//    // e.target.classList.remove("active");
+//    hw = document.getElementById('hw-346');
+//    hw.classList.remove('focus');
+// });
 
 // end app
