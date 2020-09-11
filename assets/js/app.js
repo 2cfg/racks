@@ -1,149 +1,127 @@
 // begin lib
-var RackBuilder = (function namespace() {
-    
-    class Builder {
-        constructor(rack, hardwareList) {
-            this.rack = rack;
-            this.hardwareList = hardwareList;
-            this.frontview = null;
-            this.unitsMap = null;
-        }
+var TowerRackBuilder = (function namespace() {
 
-      //   parse blade type depending on place
-      //   parseBladeTypes() {
+   class Builder {
+      constructor(rack, hardwareList) {
+         this.rack = rack;
+         this.hardwareList = hardwareList;
+         this.frontview = null;
+         this.unitsMap = null;
+      }
 
-      //   }
+      init(frontview) {
+         console.log("builder initialize")
 
-        createUnitsMap() {
-            this.unitsMap = new Array(this.rack.size + 1);
-            this.hardwareList.forEach(hw => {
-                hw.units.forEach(unit => {
-                    if (hw.type == "switch" || hw.type == "unitserver") {
-                        this.unitsMap[unit] = hw;
-                    }
-                    else if (hw.type == "bladechassis") {
-                        this.unitsMap[unit] = hw;
-                        let childsize = 0;
-                        if (!hw.hasOwnProperty("childsize")) {
-                           if (hw.class == "hp-c7000") {
-                              hw.childsize = 16
-                              childsize = hw.childsize * 2 + 1; 
-                           }
-                           else if (hw.class == "cisco-ucs") {
-                              hw.childsize = 8
-                              childsize = hw.childsize + 1;
-                           }
-                        }
-                        hw.childs = new Array(childsize);
-                    }
-                });
+         this.rack.name_num = this.rack.name.split(" ")[1];
 
-                if (hw.type == "ucsbladeserver") {
-                  let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
-                  if (chassis) {
-                      hw.units.forEach(unit => {
-                          chassis.childs[unit] = hw;
-                      });
+         this.frontview = document.getElementById(frontview);
+         this.createUnitsMap();
+      }
+
+      parseUnit(unitstr) {
+         return unitstr.split("/").map(x => +x);
+      }
+
+      createUnitsMap() {
+         this.unitsMap = new Array(this.rack.size + 1);
+         this.hardwareList.forEach(hw => {
+            hw.units.forEach(unit => {
+               if (hw.type == "tower") {
+                  let unitarr = this.parseUnit(unit);
+                  if (unitarr[0] == this.rack.name_num) {
+                     let pos = unitarr[1] * 5 + 6 - unitarr[2];
+                     this.unitsMap[pos] = hw;
                   }
-              } 
-              else if (hw.type == "fullbladeserver") {
-                    let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
-                    if (chassis) {
-                        hw.units.forEach(unit => {
-                            chassis.childs[unit * 2 - 1] = hw;
-                            chassis.childs[unit * 2] = hw;
-                        });
-                    }
-                }
-                else if (hw.type == "halfbladeserver") {
-                    let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
-                    if (chassis) {
-                        hw.units.forEach(unit => {
-                            let base = Number.parseInt(unit) * 2 - 1;
-                            if (unit.toLowerCase().charAt(unit.length -1) == 'a') {
-                                chassis.childs[base] = hw;
-                            }
-                            else 
-                            if (unit.toLowerCase().charAt(unit.length - 1) == 'b') {
-                                chassis.childs[base + 1] = hw;
-                            }
-                            
-                        });
-                    }
-                }
+               }
             });
-        }
+         });
+      }
 
-        init(frontview) {
-            console.log("builder initialize")
-
-            this.frontview = document.getElementById(frontview);
-            this.createUnitsMap();
-        }
-
-        getUnitNum(index) {
-            let unitNum = document.createElement('div');
-            unitNum.classList.add('unit-num');
-            unitNum.innerText = index;
-
-            return unitNum;
-        }
-
-        getDiskDrive(type, capacity) {
-           let d = document.createElement('div');
-           let resClass = "disk-" + type;
-           d.innerText = capacity;
-
-           d.classList.add(resClass);
-           return d;
-        }
-
-        createDiskDriveContainer(size, maxdrive) {
-         let c = document.createElement('div');
-         let resClass = "disk-ctr-" + size + "-" + maxdrive;
-
-         c.classList.add(resClass);
-         return c;
-        }
-
-        getHardwareTitle(name) {
+      getHardwareTitle(name) {
          let title = document.createElement('div');
          title.classList.add('hw-title');
          title.innerText = 'S' + name;
          return title;
-        }
+      }
+      
+      getHardwareInnerViewContainer(size) {
+         let c = document.createElement('div');
+         let resClass = 'tower-hw-ctr-' + size;
+         c.classList.add(resClass);
+         return c;
+      }
+      
+      getDiskDrive(type, capacity) {
+         let d = document.createElement('div');
+         let resClass = "disk-" + type;
+         d.innerText = capacity;
 
-        getHardwareInnerViewContainer(type, size) {
+         d.classList.add(resClass);
+         return d;
+      }
 
-           let c = document.createElement('div');
-           if (type == "unitserver") {
-            let resClass = 'hw-ctr-' + size*24;
-            c.classList.add(resClass);
-           }
-           else if (type == "hp-c7000-bladeserver") {
-            let resClass = 'blade-ctr-' + size;
-            c.classList.add(resClass);
-           }
-           else if (type == "cisco-ucs-bladeserver") {
-            let resClass = 'cisco-ucs-ctr-' + size;
-            c.classList.add(resClass);
-           }
-           
-           return c;
-        }
+      createDiskDriveContainer(size, maxdrive) {
+         let c = document.createElement('div');
+         let resClass = "tower-disk-ctr-" + size + "-" + maxdrive;
 
-        getItemHint(index, item, title) {
+         c.classList.add(resClass);
+         return c;
+      }
+
+      addTower(tower, index, view) {
+         let rackObject = view;
+
+         let srv = document.createElement('div');
+         let srvClass = "t-server-" + tower.powerstate;
+         srv.classList.add(srvClass);
+         // srv.innerText = "S" + tower.id;
+
+         let hwCtr = this.getHardwareInnerViewContainer(tower.size);
+         srv.appendChild(hwCtr);
+
+         // add title
+         hwCtr.appendChild(this.getHardwareTitle(tower.id));
+
+         // add drives
+         let drives = tower.drives;
+
+         if (drives.length > 0) {
+            let ctr = this.createDiskDriveContainer(tower.size, tower.maxdrive);
+            drives.forEach(drive => {
+               ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
+            });
+            hwCtr.appendChild(ctr);
+         }
+
+         let hint = this.getItemHint(tower, "Место: " + tower.units[0] + "; Сервер: S" + tower.id);
+         srv.classList.add("use-hint");
+         srv.appendChild(hint);
+
+         rackObject.appendChild(srv);
+      }
+
+      addEmptyUnit(index, view) {
+         let rackObject = view;
+
+         let emptyUnit = document.createElement('div');
+         let emptyClass = "t-empty";
+         emptyUnit.classList.add(emptyClass);
+
+         rackObject.appendChild(emptyUnit);
+      }
+
+      getItemHint(item, title) {
          let hint = document.createElement('div');
          hint.classList.add("hw-tooltiptext");
-         
-         let str1= document.createElement('div');
+
+         let str1 = document.createElement('div');
          str1.innerText = title;
          hint.appendChild(str1);
 
          if (item.drives.length > 0) {
             let str2 = document.createElement('div');
             let tmpstr = "Диски:<br>";
-            item.drives.forEach(drive => { 
+            item.drives.forEach(drive => {
                tmpstr += drive.type + ' ' + drive.capacity + '<br>';
             });
 
@@ -154,300 +132,479 @@ var RackBuilder = (function namespace() {
          return hint;
       }
 
-        addUnitServer(item, index, view) {
-            // rackObject = document.createElement('div');
-            // rackObject.classList.add("rack-object")
-            let rackObject = view;
-
-            let hw = document.createElement('div');
-            hw.classList.add("hardware");
-            hw.id = "hw-" + item.id;
-            
-            let isize = item.size
-            let serverSize = "server" + isize + "u-" + item.powerstate;
-            let gridSize = "size-" + isize + "u";
-            hw.classList.add(serverSize);
-            hw.classList.add(gridSize);
-
-            let hwCtr = this.getHardwareInnerViewContainer("unitserver", item.size);
-            hw.appendChild(hwCtr);
-            
-            // add title
-            hwCtr.appendChild(this.getHardwareTitle(item.id));
-
-            // add drives
-            let drives = item.drives;
-            
-            if (drives.length > 0) {
-               let ctr = this.createDiskDriveContainer(item.size, item.maxdrive);
-               drives.forEach(drive => { 
-                  ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
-               });
-               hwCtr.appendChild(ctr);
+      createFrontView() {
+         for (let i = this.rack.size; i > 0;) {
+            if (!this.unitsMap[i]) {
+               this.addEmptyUnit(i, this.frontview);
+               i = i - 1;
+               continue;
             }
 
-            // add hint
-            let unitsstr = index;
-            if (item.size > 1) {
-               let pos = index;
-               for (let i = item.size; i > 1; i--) {
-                  unitsstr += "," + --pos;
+            if (this.unitsMap[i].type == "tower") {
+               this.addTower(this.unitsMap[i], i, this.frontview);
+            }
+
+            i = i - this.unitsMap[i].size;
+         }
+      }
+
+   }
+   return Builder;
+}());
+
+
+
+
+
+var RackBuilder = (function namespace() {
+
+   class Builder {
+      constructor(rack, hardwareList) {
+         this.rack = rack;
+         this.hardwareList = hardwareList;
+         this.frontview = null;
+         this.unitsMap = null;
+      }
+
+      //   parse blade type depending on place
+      //   parseBladeTypes() {
+
+      //   }
+
+      createUnitsMap() {
+         this.unitsMap = new Array(this.rack.size + 1);
+         this.hardwareList.forEach(hw => {
+            hw.units.forEach(unit => {
+               if (hw.type == "switch" || hw.type == "unitserver") {
+                  this.unitsMap[unit] = hw;
+               }
+               else if (hw.type == "bladechassis") {
+                  this.unitsMap[unit] = hw;
+                  let childsize = 0;
+                  if (!hw.hasOwnProperty("childsize")) {
+                     if (hw.class == "hp-c7000") {
+                        hw.childsize = 16
+                        childsize = hw.childsize * 2 + 1;
+                     }
+                     else if (hw.class == "cisco-ucs") {
+                        hw.childsize = 8
+                        childsize = hw.childsize + 1;
+                     }
+                  }
+                  hw.childs = new Array(childsize);
+               }
+            });
+
+            if (hw.type == "ucsbladeserver") {
+               let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
+               if (chassis) {
+                  hw.units.forEach(unit => {
+                     chassis.childs[unit] = hw;
+                  });
+               }
+            }
+            else if (hw.type == "fullbladeserver") {
+               let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
+               if (chassis) {
+                  hw.units.forEach(unit => {
+                     chassis.childs[unit * 2 - 1] = hw;
+                     chassis.childs[unit * 2] = hw;
+                  });
+               }
+            }
+            else if (hw.type == "halfbladeserver") {
+               let chassis = this.hardwareList.filter(c => c.id == hw.chassisid)[0];
+               if (chassis) {
+                  hw.units.forEach(unit => {
+                     let base = Number.parseInt(unit) * 2 - 1;
+                     if (unit.toLowerCase().charAt(unit.length - 1) == 'a') {
+                        chassis.childs[base] = hw;
+                     }
+                     else
+                        if (unit.toLowerCase().charAt(unit.length - 1) == 'b') {
+                           chassis.childs[base + 1] = hw;
+                        }
+
+                  });
+               }
+            }
+         });
+      }
+
+      init(frontview) {
+         console.log("builder initialize")
+
+         this.frontview = document.getElementById(frontview);
+         this.createUnitsMap();
+      }
+
+      getUnitNum(index) {
+         let unitNum = document.createElement('div');
+         unitNum.classList.add('unit-num');
+         unitNum.innerText = index;
+
+         return unitNum;
+      }
+
+      getDiskDrive(type, capacity) {
+         let d = document.createElement('div');
+         let resClass = "disk-" + type;
+         d.innerText = capacity;
+
+         d.classList.add(resClass);
+         return d;
+      }
+
+      createDiskDriveContainer(size, maxdrive) {
+         let c = document.createElement('div');
+         let resClass = "disk-ctr-" + size + "-" + maxdrive;
+
+         c.classList.add(resClass);
+         return c;
+      }
+
+      getHardwareTitle(name) {
+         let title = document.createElement('div');
+         title.classList.add('hw-title');
+         title.innerText = 'S' + name;
+         return title;
+      }
+
+      getHardwareInnerViewContainer(type, size) {
+
+         let c = document.createElement('div');
+         if (type == "unitserver") {
+            let resClass = 'hw-ctr-' + size * 24;
+            c.classList.add(resClass);
+         }
+         else if (type == "hp-c7000-bladeserver") {
+            let resClass = 'blade-ctr-' + size;
+            c.classList.add(resClass);
+         }
+         else if (type == "cisco-ucs-bladeserver") {
+            let resClass = 'cisco-ucs-ctr-' + size;
+            c.classList.add(resClass);
+         }
+
+         return c;
+      }
+
+      getItemHint(index, item, title) {
+         let hint = document.createElement('div');
+         hint.classList.add("hw-tooltiptext");
+
+         let str1 = document.createElement('div');
+         str1.innerText = title;
+         hint.appendChild(str1);
+
+         if (item.drives.length > 0) {
+            let str2 = document.createElement('div');
+            let tmpstr = "Диски:<br>";
+            item.drives.forEach(drive => {
+               tmpstr += drive.type + ' ' + drive.capacity + '<br>';
+            });
+
+            str2.innerHTML = tmpstr;
+            hint.appendChild(str2);
+         }
+
+         return hint;
+      }
+
+      addUnitServer(item, index, view) {
+         // rackObject = document.createElement('div');
+         // rackObject.classList.add("rack-object")
+         let rackObject = view;
+
+         let hw = document.createElement('div');
+         hw.classList.add("hardware");
+         hw.id = "hw-" + item.id;
+
+         let isize = item.size
+         let serverSize = "server" + isize + "u-" + item.powerstate;
+         let gridSize = "size-" + isize + "u";
+         hw.classList.add(serverSize);
+         hw.classList.add(gridSize);
+
+         let hwCtr = this.getHardwareInnerViewContainer("unitserver", item.size);
+         hw.appendChild(hwCtr);
+
+         // add title
+         hwCtr.appendChild(this.getHardwareTitle(item.id));
+
+         // add drives
+         let drives = item.drives;
+
+         if (drives.length > 0) {
+            let ctr = this.createDiskDriveContainer(item.size, item.maxdrive);
+            drives.forEach(drive => {
+               ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
+            });
+            hwCtr.appendChild(ctr);
+         }
+
+         // add hint
+         let unitsstr = index;
+         if (item.size > 1) {
+            let pos = index;
+            for (let i = item.size; i > 1; i--) {
+               unitsstr += "," + --pos;
+            }
+         }
+
+         let hint = this.getItemHint(index, item, "Юнит: " + unitsstr + "; Сервер: S" + item.id);
+         hw.classList.add("use-hint");
+         hw.appendChild(hint);
+
+         rackObject.appendChild(this.getUnitNum(index));
+         rackObject.appendChild(hw);
+         rackObject.appendChild(this.getUnitNum(index));
+         while (isize-- > 1) {
+            let idx = --index;
+            rackObject.appendChild(this.getUnitNum(idx));
+            rackObject.appendChild(this.getUnitNum(idx));
+         }
+      }
+
+      addSwitch(item, index, view) {
+         let rackObject = view;
+
+         let hw = document.createElement('div');
+         hw.classList.add("hardware");
+         let isize = item.size
+         let switchSize = "switch" + isize + "u";
+         let gridSize = "size-" + isize + "u";
+         hw.classList.add(switchSize);
+         hw.classList.add(gridSize);
+
+         let hwCtr = this.getHardwareInnerViewContainer(item.size);
+         hw.appendChild(hwCtr);
+
+         // add title
+         hwCtr.appendChild(this.getHardwareTitle(item.id));
+
+         // add hint
+         let unitsstr = index;
+         if (item.size > 1) {
+            let pos = index;
+            for (let i = item.size; i > 1; i--) {
+               unitsstr += "," + --pos;
+            }
+         }
+
+         let hint = this.getItemHint(index, item, "Юнит: " + unitsstr + "; Коммутатор: S" + item.id);
+         hw.classList.add("use-hint");
+         hw.appendChild(hint);
+
+         rackObject.appendChild(this.getUnitNum(index));
+         rackObject.appendChild(hw);
+         rackObject.appendChild(this.getUnitNum(index));
+         while (isize-- > 1) {
+            let idx = --index;
+            rackObject.appendChild(this.getUnitNum(idx));
+            rackObject.appendChild(this.getUnitNum(idx));
+         }
+      }
+
+      addBladeChassis(item, index, view) {
+         let rackObject = view;
+
+         let unitNum = document.createElement('div');
+         unitNum.classList.add('unit-num');
+         unitNum.innerText = index;
+
+         let hw = document.createElement('div');
+         hw.classList.add("hardware");
+         let isize = item.size
+         let bladeSize = "blade-" + item.class + "-" + isize + "u";
+         let gridSize = "size-" + isize + "u";
+         hw.classList.add(bladeSize);
+         hw.classList.add(gridSize);
+         let chassisId = "chassis-" + item.id
+         hw.classList.add(chassisId);
+
+         rackObject.appendChild(this.getUnitNum(index));
+         rackObject.appendChild(hw);
+         rackObject.appendChild(this.getUnitNum(index));
+         while (isize-- > 1) {
+            let idx = --index;
+            rackObject.appendChild(this.getUnitNum(idx));
+            rackObject.appendChild(this.getUnitNum(idx));
+         }
+
+         return hw;
+      }
+
+      addEmptyUnit(index, view) {
+         let rackObject = view;
+
+         let emptyUnit = document.createElement('div');
+         let emptyClass = index % 2 == 0 ? "empty-unit-even" : "empty-unit-odd";
+         emptyUnit.classList.add(emptyClass);
+
+         rackObject.appendChild(this.getUnitNum(index));
+         rackObject.appendChild(emptyUnit);
+         rackObject.appendChild(this.getUnitNum(index));
+      }
+
+      addRackCover(title = "", view) {
+         let rackObject = view;
+         let cover = document.createElement('div');
+         cover.classList.add('rack-cover');
+         cover.innerText = title;
+         rackObject.appendChild(cover);
+      }
+
+      addBladeServers(item, chassis) {
+         let rackObject = chassis;
+         let container = document.createElement('div');
+         let bladeClass = "blade-" + item.class + "-chassis-container";
+         container.classList.add(bladeClass);
+         rackObject.appendChild(container);
+
+         if (item.class == "hp-c7000") {
+            for (let i = 1; i < item.childsize * 2 + 1; i++) {
+               let blade = item.childs[i];
+
+               if (!blade) {
+                  container.appendChild(this.addEmptyBladeSlot(item.class));
+                  i++;
+               }
+               else if (blade.type == "fullbladeserver") {
+                  let slot = blade.units[0];
+                  let view = this.addFullBladeServer(blade, slot);
+                  container.appendChild(view);
+                  i++;
+               }
+               else if (blade.type == "halfbladeserver") {
+                  let slot = blade.units[0];
+                  let side = i % 2 == 0 ? "b" : "a";
+                  let view = this.addHalfBladeServer(blade, side, slot);
+                  container.appendChild(view);
+               }
+            }
+         } else if (item.class == "cisco-ucs") {
+            for (let i = 1; i < item.childsize + 1; i++) {
+               let blade = item.childs[i];
+               if (!blade) {
+                  container.appendChild(this.addEmptyBladeSlot(item.class));
+               }
+               else {
+                  let slot = blade.units[0];
+                  let view = this.addFullBladeServer(blade, slot);
+                  container.appendChild(view);
                }
             }
 
-            let hint = this.getItemHint(index, item, "Юнит: " + unitsstr + "; Сервер: S" + item.id);
-            hw.classList.add("use-hint");
-            hw.appendChild(hint);
+         }
 
-            rackObject.appendChild(this.getUnitNum(index));
-            rackObject.appendChild(hw);
-            rackObject.appendChild(this.getUnitNum(index));
-            while (isize-- > 1) {
-                let idx = --index;
-                rackObject.appendChild(this.getUnitNum(idx));
-                rackObject.appendChild(this.getUnitNum(idx));
-            }
-        }
+      }
 
-        addSwitch(item, index, view) {
-            let rackObject = view;
+      addFullBladeServer(blade, slot) {
+         let hw = document.createElement('div');
+         hw.classList.add('blade-' + blade.class + '-' + blade.type + '-' + blade.powerstate);
+         hw.classList.add('blade');
+         hw.classList.add(blade.class)
+         // hw.innerText = "S " + blade.id;
 
-            let hw = document.createElement('div');
-            hw.classList.add("hardware");
-            let isize = item.size
-            let switchSize = "switch" + isize + "u";
-            let gridSize = "size-" + isize + "u";
-            hw.classList.add(switchSize);
-            hw.classList.add(gridSize);
+         let hwCtr = this.getHardwareInnerViewContainer(blade.class + "-bladeserver", blade.size);
+         hw.appendChild(hwCtr);
 
-            let hwCtr = this.getHardwareInnerViewContainer(item.size);
-            hw.appendChild(hwCtr);
-            
-            // add title
-            hwCtr.appendChild(this.getHardwareTitle(item.id));
-
-            // add hint
-            let unitsstr = index;
-            if (item.size > 1) {
-               let pos = index;
-               for (let i = item.size; i > 1; i--) {
-                  unitsstr += "," + --pos;
-               }
-            }
-
-            let hint = this.getItemHint(index, item, "Юнит: " + unitsstr + "; Коммутатор: S" + item.id);
-            hw.classList.add("use-hint");
-            hw.appendChild(hint);
-
-            rackObject.appendChild(this.getUnitNum(index));
-            rackObject.appendChild(hw);
-            rackObject.appendChild(this.getUnitNum(index));
-            while (isize-- > 1) {
-                let idx = --index;
-                rackObject.appendChild(this.getUnitNum(idx));
-                rackObject.appendChild(this.getUnitNum(idx));
-            }
-        }
-
-        addBladeChassis(item, index, view) {
-            let rackObject = view;
-
-            let unitNum = document.createElement('div');
-            unitNum.classList.add('unit-num');
-            unitNum.innerText = index;
-
-            let hw = document.createElement('div');
-            hw.classList.add("hardware");
-            let isize = item.size
-            let bladeSize = "blade-" + item.class + "-" + isize + "u";
-            let gridSize = "size-" + isize + "u";
-            hw.classList.add(bladeSize);
-            hw.classList.add(gridSize);
-            let chassisId = "chassis-" + item.id
-            hw.classList.add(chassisId);
-
-            rackObject.appendChild(this.getUnitNum(index));
-            rackObject.appendChild(hw);
-            rackObject.appendChild(this.getUnitNum(index));
-            while (isize-- > 1) {
-                let idx = --index;
-                rackObject.appendChild(this.getUnitNum(idx));
-                rackObject.appendChild(this.getUnitNum(idx));
-            }
-
-            return hw;
-        }
-
-        addEmptyUnit(index, view) {
-            let rackObject = view;
-
-            let emptyUnit = document.createElement('div');
-            let emptyClass = index % 2 == 0 ? "empty-unit-even" : "empty-unit-odd";
-            emptyUnit.classList.add(emptyClass);
-
-            rackObject.appendChild(this.getUnitNum(index));
-            rackObject.appendChild(emptyUnit);
-            rackObject.appendChild(this.getUnitNum(index));
-        }
-
-        addRackCover(title="", view) {
-            let rackObject = view;
-            let cover = document.createElement('div');
-            cover.classList.add('rack-cover');
-            cover.innerText = title;
-            rackObject.appendChild(cover);
-        }
-
-        addBladeServers(item, chassis) {
-            let rackObject = chassis;
-            let container = document.createElement('div');
-            let bladeClass = "blade-" + item.class + "-chassis-container";
-            container.classList.add(bladeClass);
-            rackObject.appendChild(container);
-
-            if (item.class == "hp-c7000") {
-               for (let i = 1; i < item.childsize * 2 + 1; i++) {
-                  let blade = item.childs[i];
-
-                  if (!blade) {
-                     container.appendChild(this.addEmptyBladeSlot(item.class));
-                     i++;
-                  }
-                  else if (blade.type == "fullbladeserver") {
-                     let slot = blade.units[0];
-                     let view = this.addFullBladeServer(blade, slot);
-                     container.appendChild(view);
-                     i++;
-                  }
-                  else if (blade.type == "halfbladeserver") {
-                     let slot = blade.units[0];
-                     let side = i % 2 == 0 ? "b" : "a";
-                     let view = this.addHalfBladeServer(blade, side, slot);
-                     container.appendChild(view);
-                  }
-               }
-            } else if (item.class == "cisco-ucs") {
-               for (let i = 1; i < item.childsize + 1; i++) {
-                  let blade = item.childs[i];
-                  if (!blade) {
-                     container.appendChild(this.addEmptyBladeSlot(item.class));
-                  }
-                  else {
-                     let slot = blade.units[0];
-                     let view = this.addFullBladeServer(blade, slot);
-                     container.appendChild(view);
-                  }
-               }
-
-            }
-
-        }
-
-        addFullBladeServer(blade, slot) {
-            let hw = document.createElement('div');
-            hw.classList.add('blade-' + blade.class + '-' + blade.type + '-' + blade.powerstate);
-            hw.classList.add('blade');
-            hw.classList.add(blade.class)
-            // hw.innerText = "S " + blade.id;
-            
-            let hwCtr = this.getHardwareInnerViewContainer(blade.class + "-bladeserver", blade.size);
-            hw.appendChild(hwCtr);
-
-            if (blade.class == "hp-c7000") {
-               hwCtr.appendChild(document.createElement('div')); //empty row
-            }
-            // add title
-            hwCtr.appendChild(this.getHardwareTitle(blade.id));
-
-            // add drives
-            let drives = blade.drives;
-            
-            if (drives.length > 0) {
-               let ctr = this.createDiskDriveContainer(blade.size, blade.maxdrive);
-               drives.forEach(drive => { 
-                  ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
-               });
-               hwCtr.appendChild(ctr);
-            }
-
-            // add hint
-            let hint = this.getItemHint(slot, blade, "Слот: " + slot + ", Blade-сервер: S" + blade.id);
-            hw.classList.add("use-hint");
-            hw.appendChild(hint);
-
-            return hw;
-        }
-
-        addHalfBladeServer(blade, side, slot) {
-            let hw = document.createElement('div');
-            hw.classList.add('blade-' + blade.class + '-halfbladeserver-' + side + '-' + blade.powerstate);
-            hw.classList.add('blade');
-            hw.classList.add(blade.class);
-            
-            let hwCtr = this.getHardwareInnerViewContainer(blade.class + "-bladeserver", blade.size);
-            hw.appendChild(hwCtr);
-
+         if (blade.class == "hp-c7000") {
             hwCtr.appendChild(document.createElement('div')); //empty row
-            // add title
-            hwCtr.appendChild(this.getHardwareTitle(blade.id));
+         }
+         // add title
+         hwCtr.appendChild(this.getHardwareTitle(blade.id));
 
-            // add drives
-            let drives = blade.drives;
-            
-            if (drives.length > 0) {
-               let ctr = this.createDiskDriveContainer(blade.size, blade.maxdrive);
-               drives.forEach(drive => { 
-                  ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
-               });
-               hwCtr.appendChild(ctr);
+         // add drives
+         let drives = blade.drives;
+
+         if (drives.length > 0) {
+            let ctr = this.createDiskDriveContainer(blade.size, blade.maxdrive);
+            drives.forEach(drive => {
+               ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
+            });
+            hwCtr.appendChild(ctr);
+         }
+
+         // add hint
+         let hint = this.getItemHint(slot, blade, "Слот: " + slot + ", Blade-сервер: S" + blade.id);
+         hw.classList.add("use-hint");
+         hw.appendChild(hint);
+
+         return hw;
+      }
+
+      addHalfBladeServer(blade, side, slot) {
+         let hw = document.createElement('div');
+         hw.classList.add('blade-' + blade.class + '-halfbladeserver-' + side + '-' + blade.powerstate);
+         hw.classList.add('blade');
+         hw.classList.add(blade.class);
+
+         let hwCtr = this.getHardwareInnerViewContainer(blade.class + "-bladeserver", blade.size);
+         hw.appendChild(hwCtr);
+
+         hwCtr.appendChild(document.createElement('div')); //empty row
+         // add title
+         hwCtr.appendChild(this.getHardwareTitle(blade.id));
+
+         // add drives
+         let drives = blade.drives;
+
+         if (drives.length > 0) {
+            let ctr = this.createDiskDriveContainer(blade.size, blade.maxdrive);
+            drives.forEach(drive => {
+               ctr.appendChild(this.getDiskDrive(drive.type, drive.capacity));
+            });
+            hwCtr.appendChild(ctr);
+         }
+
+         // add hint
+         let hint = this.getItemHint(slot, blade, "Слот: " + slot + ", Blade-сервер: S" + blade.id);
+         hw.classList.add("use-hint");
+         hw.appendChild(hint);
+
+         return hw;
+      }
+
+      addEmptyBladeSlot(bladeClass) {
+         let slot = document.createElement('div');
+         slot.classList.add('blade-' + bladeClass + '-empty-slot');
+
+         return slot;
+      }
+
+      createFrontView() {
+
+         this.addRackCover(this.rack.name, this.frontview);
+
+         for (let i = this.rack.size; i > 0;) {
+            if (!this.unitsMap[i]) {
+               this.addEmptyUnit(i, this.frontview);
+               i = i - 1;
+               continue;
             }
 
-            // add hint
-            let hint = this.getItemHint(slot, blade, "Слот: " + slot + ", Blade-сервер: S" + blade.id);
-            hw.classList.add("use-hint");
-            hw.appendChild(hint);
-
-            return hw;
-        }
-
-        addEmptyBladeSlot(bladeClass) {
-            let slot = document.createElement('div');
-            slot.classList.add('blade-' + bladeClass + '-empty-slot');
-
-            return slot;
-        }
-
-        createFrontView() {
-
-            this.addRackCover(this.rack.name, this.frontview);
-
-            for (let i = this.rack.size; i > 0;) {
-                if (!this.unitsMap[i]) {
-                    this.addEmptyUnit(i, this.frontview);
-                    i = i - 1;
-                    continue;
-                }
-
-                if (this.unitsMap[i].type == "switch") {
-                    this.addSwitch(this.unitsMap[i], i, this.frontview);
-                }
-                else if (this.unitsMap[i].type == "unitserver") {
-                    this.addUnitServer(this.unitsMap[i], i, this.frontview);
-                }
-                else if (this.unitsMap[i].type == "bladechassis") {
-                    let chassis = this.addBladeChassis(this.unitsMap[i], i, this.frontview);
-                    // get blade servers and add in current chassis;
-                    this.addBladeServers(this.unitsMap[i], chassis);
-                }
-
-                i = i - this.unitsMap[i].size;
+            if (this.unitsMap[i].type == "switch") {
+               this.addSwitch(this.unitsMap[i], i, this.frontview);
+            }
+            else if (this.unitsMap[i].type == "unitserver") {
+               this.addUnitServer(this.unitsMap[i], i, this.frontview);
+            }
+            else if (this.unitsMap[i].type == "bladechassis") {
+               let chassis = this.addBladeChassis(this.unitsMap[i], i, this.frontview);
+               // get blade servers and add in current chassis;
+               this.addBladeServers(this.unitsMap[i], chassis);
             }
 
-            this.addRackCover("", this.frontview);
+            i = i - this.unitsMap[i].size;
+         }
 
-        }
-    }
-    return Builder;
+         this.addRackCover("", this.frontview);
+
+      }
+   }
+   return Builder;
 }());
 
 // end lib
@@ -456,7 +613,14 @@ var RackBuilder = (function namespace() {
 
 // example data
 function fetchRack() {
-    return JSON.parse(`{
+   return JSON.parse(`{
+      "room":"115",
+      "name":"Стеллаж 7",
+      "type":"towers",
+      "size":30,
+      "switch": [181]
+   }`);
+   return JSON.parse(`{
         "room":"110",
         "name":"RA03",
         "type":"units",
@@ -465,7 +629,7 @@ function fetchRack() {
      }`);
 }
 // example data
-function fetchHardwareList() {
+/*function fetchHardwareList() {
     return JSON.parse(`
     [
         {
@@ -1073,6 +1237,282 @@ function fetchHardwareList() {
          }
      ]
     `);
+}*/
+
+function fetchHardwareList() {
+   return JSON.parse(`
+   [
+       {
+          "id":121,
+          "type":"tower",
+          "size":1,
+          "units":[
+             "7/0/1"
+          ],
+          "pdu":[
+             "211/7/3"
+          ],
+          "maxdrive": 6,
+          "drives":[
+          ],
+          "powerstate":1,
+          "cross": [
+          ]
+       },
+       {
+         "id":122,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/0/2"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":0,
+         "cross": [
+         ]
+      },
+      {
+         "id":123,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/0/3"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      },
+      {
+         "id":124,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/0/5"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":0,
+         "cross": [
+         ]
+      },
+      {
+         "id":125,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/1/2"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":0,
+         "cross": [
+         ]
+      },
+      {
+         "id":126,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/1/4"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      },
+      {
+         "id":127,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/2/1"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      },
+      {
+         "id":128,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/2/2"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":0,
+         "cross": [
+         ]
+      },
+      {
+         "id":129,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/3/3"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      },
+      {
+         "id":130,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/3/5"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+         ],
+         "powerstate":0,
+         "cross": [
+         ]
+      },
+      {
+         "id":131,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/5/1"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"},
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"},
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"}
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      },
+      {
+         "id":132,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/5/2"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+            {"type": "sata-hdd", "capacity": "1Tb"}
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      },
+      {
+         "id":133,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/5/3"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+            {"type": "sata-ssd", "capacity": "500G"}
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      },
+      {
+         "id":134,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/5/4"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"}
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      },
+      {
+         "id":135,
+         "type":"tower",
+         "size":1,
+         "units":[
+            "7/5/5"
+         ],
+         "pdu":[
+            "211/7/3"
+         ],
+         "maxdrive": 6,
+         "drives":[
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"},
+            {"type": "sata-ssd", "capacity": "500G"},
+            {"type": "sata-hdd", "capacity": "1Tb"}
+         ],
+         "powerstate":1,
+         "cross": [
+         ]
+      }
+   ]
+   `);
 }
 
 let rack = fetchRack();
@@ -1083,8 +1523,11 @@ if (rack.type == "units") {
    let builder = new RackBuilder(rack, hardwareList);
    builder.init("frontview");
    builder.createFrontView();
-} 
-else if (rack.class == "towers") {
+}
+else if (rack.type == "towers") {
+   let builder = new TowerRackBuilder(rack, hardwareList);
+   builder.init("frontview");
+   builder.createFrontView();
    // let builder = new TowerRackBuilder(rack, hardwareList);
 }
 
@@ -1096,7 +1539,7 @@ else if (rack.class == "towers") {
 //    hw = document.getElementById('hw-443');
 //    hw.classList.add('focus');
 // });
-   
+
 // rel.addEventListener("mouseout", function(e) {
 //    // e.target.classList.remove("active");
 //    hw = document.getElementById('hw-443');
@@ -1110,7 +1553,7 @@ else if (rack.class == "towers") {
 //    hw = document.getElementById('hw-346');
 //    hw.classList.add('focus');
 // });
-   
+
 // rel2.addEventListener("mouseout", function(e) {
 //    // e.target.classList.remove("active");
 //    hw = document.getElementById('hw-346');

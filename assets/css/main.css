@@ -293,7 +293,7 @@ body {
 }
 
 .use-hint:hover {
-    border: 1px solid #00a2ff;
+    border: 1px solid #00a2ff !important;
     background-size: cover;
 }
 
@@ -545,5 +545,117 @@ body {
     cursor: default;
 }
 
+/* ----- DESKTOP STYLES ----- */
 
-.tower {}
+.tower-container {
+    display: grid;
+    grid-template-columns: 120px 254px 1fr;
+    grid-template-rows: 600px;
+    grid-column-gap: 15px;
+}
+
+
+
+.tower-container .tower-case {
+    display: grid;
+    grid-template-columns: 12px 230px 12px;
+    grid-template-rows: 12px 576px 12px;
+    background-color: #a0a4ad;
+}
+
+.tower-case .tower-view {
+    display: grid;
+    grid-template-columns: repeat(5, 46px);
+    grid-template-rows: repeat(6, 96px);
+    grid-row-gap: 0px;
+    grid-column-gap: 0px;
+    background-color: #aaa;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    cursor: default;
+}
+
+.tower-view .t-server-0 {
+    background-color: #fff;
+    border: 1px solid #bbb;
+    text-align: center;
+    background-image: url("../images/tower_0.svg");
+    background-size: cover;
+    color: #fff;
+}
+
+.tower-view .t-server-1 {
+    background-color: #fff;
+    border: 1px solid #bbb;
+    text-align: center;
+    background-image: url("../images/tower_1.svg");
+    background-size: cover;
+    color: #fff;
+}
+
+.tower-view .t-empty {
+    background-color: #fff;
+    border: 1px solid black;
+    background-color: #555;
+    color: #fff;
+}
+
+.tower-case .tower-col-left {
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 96px);
+    /* background-color: tomato; */
+}
+
+.tower-col-left .col-num {
+    line-height: 96px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tower-hw-ctr-1 {
+    display: grid;
+    grid-template-columns: 42px;
+    grid-template-rows: 16px 72px;
+}
+
+.tower-hw-ctr-1 .hw-title {
+ font-size: 16px;
+}
+
+.tower-disk-ctr-1-6 {
+    display: grid;
+    grid-template-columns: 42px;
+    grid-template-rows: repeat(6, 12px);
+    padding: 1px;
+}
+
+.tower-disk-ctr-1-6 .disk-sata-ssd {
+    background-color: #55c9ff;
+    font-size: 8px;
+    text-align: center;
+    line-height: normal;
+}
+
+.tower-disk-ctr-1-6 .disk-sata-hdd {
+    background-color: #3dc27f;
+    font-size: 8px;
+    text-align: center;
+    line-height: normal;
+}
+
+.tower-disk-ctr-1-6 .disk-sas-hdd {
+    background-color: #ff55aa;
+    font-size: 8px;
+    text-align: center;
+    line-height: normal;
+}
+
+.tower-disk-ctr-1-6 .disk-sas-ssd {
+    background-color: #fff455;
+    font-size: 8px;
+    text-align: center;
+    line-height: normal;
+}

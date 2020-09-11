@@ -37,7 +37,7 @@
                                     fullbladeserver    -- от 1 до 16
                                     halfbladeserver    -- от 1 до 16 с суфиксом 'a' или 'b'
                                     ucsbladeserver     -- от 1 до 8
-                                    tower              -- от 1 до 30
+                                    tower              -- в формате "стеллаж/ряд/место", например, "7/2/1"
                                                                                                         */
               
            "pdu":[
