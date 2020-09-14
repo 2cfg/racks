@@ -10,10 +10,7 @@ var TowerRackBuilder = (function namespace() {
       }
 
       init(frontview) {
-         console.log("builder initialize")
-
          this.rack.name_num = this.rack.name.split(" ")[1];
-
          this.frontview = document.getElementById(frontview);
          this.createUnitsMap();
       }
@@ -232,8 +229,6 @@ var RackBuilder = (function namespace() {
       }
 
       init(frontview) {
-         console.log("builder initialize")
-
          this.frontview = document.getElementById(frontview);
          this.createUnitsMap();
       }
@@ -1516,7 +1511,7 @@ function fetchHardwareList() {
 }
 
 let rack = fetchRack();
-hardwareList = fetchHardwareList();
+let hardwareList = fetchHardwareList();
 
 
 if (rack.type == "units") {
@@ -1528,7 +1523,6 @@ else if (rack.type == "towers") {
    let builder = new TowerRackBuilder(rack, hardwareList);
    builder.init("frontview");
    builder.createFrontView();
-   // let builder = new TowerRackBuilder(rack, hardwareList);
 }
 
 
