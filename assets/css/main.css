@@ -549,8 +549,8 @@ body {
 
 .tower-container {
     display: grid;
-    grid-template-columns: 120px 254px 1fr;
-    grid-template-rows: 600px;
+    grid-template-columns: 120px 324px 1fr;
+    grid-template-rows: 756px;
     grid-column-gap: 15px;
 }
 
@@ -558,15 +558,15 @@ body {
 
 .tower-container .tower-case {
     display: grid;
-    grid-template-columns: 12px 230px 12px;
-    grid-template-rows: 12px 576px 12px;
+    grid-template-columns: 12px 300px 12px;
+    grid-template-rows: 12px 732px 12px;
     background-color: #a0a4ad;
 }
 
 .tower-case .tower-view {
     display: grid;
-    grid-template-columns: repeat(5, 46px);
-    grid-template-rows: repeat(6, 96px);
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(6, 122px);
     grid-row-gap: 0px;
     grid-column-gap: 0px;
     background-color: #aaa;
@@ -604,12 +604,12 @@ body {
     grid-row: 2 / 3;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 96px);
+    grid-template-rows: repeat(6, 122px);
     /* background-color: tomato; */
 }
 
 .tower-col-left .col-num {
-    line-height: 96px;
+    line-height: 122px;
     color: #fff;
     font-weight: bold;
     text-align: center;
@@ -617,45 +617,55 @@ body {
 
 .tower-hw-ctr-1 {
     display: grid;
-    grid-template-columns: 42px;
-    grid-template-rows: 16px 72px;
+    grid-template-columns: 52px;
+    grid-template-rows: 18px 100px;
+    padding: 2px;
 }
 
 .tower-hw-ctr-1 .hw-title {
  font-size: 16px;
+ font-weight: bold;
 }
 
 .tower-disk-ctr-1-6 {
     display: grid;
-    grid-template-columns: 42px;
-    grid-template-rows: repeat(6, 12px);
+    grid-template-columns: 52px;
+    grid-template-rows: repeat(6, 16px);
     padding: 1px;
 }
 
 .tower-disk-ctr-1-6 .disk-sata-ssd {
     background-color: #55c9ff;
-    font-size: 8px;
+    font-size: 10px;
     text-align: center;
     line-height: normal;
+    border: 1px solid black;
+    border-top: none;
 }
 
 .tower-disk-ctr-1-6 .disk-sata-hdd {
     background-color: #3dc27f;
-    font-size: 8px;
+    font-size: 10px;
     text-align: center;
     line-height: normal;
+    border: 1px solid black;
+    border-top: none;
 }
 
 .tower-disk-ctr-1-6 .disk-sas-hdd {
     background-color: #ff55aa;
-    font-size: 8px;
+    font-size: 10px;
     text-align: center;
     line-height: normal;
+    border: 1px solid black;
+    border-top: none;
 }
 
 .tower-disk-ctr-1-6 .disk-sas-ssd {
     background-color: #fff455;
-    font-size: 8px;
+    font-size: 10px;
     text-align: center;
     line-height: normal;
+    border: 1px solid black;
+    border-top: none;
 }
