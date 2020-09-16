@@ -1,31 +1,37 @@
 // begin lib
-var TowerRackBuilder = (function namespace() {
+var RackBuilder = (function namespace() {
 
-   class Builder {
+   class RackBuilder {
+
       constructor(rack, hardwareList) {
          this.rack = rack;
          this.hardwareList = hardwareList;
          this.frontview = null;
          this.unitsMap = null;
+         
       }
 
-      init(frontview) {
-         this.rack.name_num = this.rack.name.split(" ")[1];
+      init(frontview) {         
          this.frontview = document.getElementById(frontview);
          this.createUnitsMap();
       }
+   }
 
+   class TowerRackBuilder extends RackBuilder {
+      
       parseUnit(unitstr) {
          return unitstr.split("/").map(x => +x);
       }
 
       createUnitsMap() {
          this.unitsMap = new Array(this.rack.size + 1);
+         let rack_index = this.rack.name.split(" ")[1]
+
          this.hardwareList.forEach(hw => {
             hw.units.forEach(unit => {
                if (hw.type == "tower") {
                   let unitarr = this.parseUnit(unit);
-                  if (unitarr[0] == this.rack.name_num) {
+                  if (unitarr[0] == rack_index) {
                      let pos = unitarr[1] * 5 + 6 - unitarr[2];
                      this.unitsMap[pos] = hw;
                   }
@@ -146,28 +152,8 @@ var TowerRackBuilder = (function namespace() {
       }
 
    }
-   return Builder;
-}());
 
-
-
-
-
-var RackBuilder = (function namespace() {
-
-   class Builder {
-      constructor(rack, hardwareList) {
-         this.rack = rack;
-         this.hardwareList = hardwareList;
-         this.frontview = null;
-         this.unitsMap = null;
-      }
-
-      //   parse blade type depending on place
-      //   parseBladeTypes() {
-
-      //   }
-
+   class UnitsRackBuilder {
       createUnitsMap() {
          this.unitsMap = new Array(this.rack.size + 1);
          this.hardwareList.forEach(hw => {
@@ -229,6 +215,7 @@ var RackBuilder = (function namespace() {
       }
 
       init(frontview) {
+         console.log(this.rack)
          this.frontview = document.getElementById(frontview);
          this.createUnitsMap();
       }
@@ -599,29 +586,46 @@ var RackBuilder = (function namespace() {
 
       }
    }
-   return Builder;
+
+
+   return {
+      "units": UnitsRackBuilder,
+      "towers": TowerRackBuilder
+   } ;
 }());
+
+
+
+
+
 
 // end lib
 // ---
 // begin app
 
 // example data
-function fetchRack() {
-   return JSON.parse(`{
-      "room":"115",
-      "name":"Стеллаж 7",
-      "type":"towers",
-      "size":30,
-      "switch": [181]
-   }`);
-   return JSON.parse(`{
-        "room":"110",
-        "name":"RA03",
-        "type":"units",
-        "size":48,
-        "switch": [103,163]
-     }`);
+function fetchRack(num) {
+   if (num == 1) {
+      return JSON.parse(`{
+         "room":"110",
+         "name":"RA03",
+         "type":"units",
+         "size":48,
+         "switch": [103,163]
+      }`);
+   }
+   else if (num == 2) {
+      return JSON.parse(`{
+         "room":"115",
+         "name":"Стеллаж 7",
+         "type":"towers",
+         "size":30,
+         "switch": [181]
+      }`);
+   }
+
+   
+
 }
 // example data
 /*function fetchHardwareList() {
@@ -1509,22 +1513,6 @@ function fetchHardwareList() {
    ]
    `);
 }
-
-let rack = fetchRack();
-let hardwareList = fetchHardwareList();
-
-
-if (rack.type == "units") {
-   let builder = new RackBuilder(rack, hardwareList);
-   builder.init("frontview");
-   builder.createFrontView();
-}
-else if (rack.type == "towers") {
-   let builder = new TowerRackBuilder(rack, hardwareList);
-   builder.init("frontview");
-   builder.createFrontView();
-}
-
 
 // let rel = document.getElementById("reltest");
 

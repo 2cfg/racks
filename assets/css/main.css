@@ -366,6 +366,15 @@ body {
     padding: 1px;
 }
 
+.disk-ctr-1-8 {
+    display: grid;
+    grid-template-columns: repeat(4, 40px);
+    grid-template-rows: 10px 10px;
+    font-size: 8px !important;
+    padding: 1px;
+    line-height: 8px !important;
+}
+
 .disk-ctr-2-8 {
     display: grid;
     grid-template-columns: repeat(4, 40px);
@@ -669,3 +678,9 @@ body {
     border: 1px solid black;
     border-top: none;
 }
+
+
+/*
+Добавить disk-ctr-1-8, disk-ctr-1-6, disk-ctr-1-5, disk-ctr-3-3 и др.
+Вынести размер шрифта с диска на контейнер диска.
+*/
