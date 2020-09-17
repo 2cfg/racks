@@ -7,13 +7,32 @@ var RackBuilder = (function namespace() {
          this.rack = rack;
          this.hardwareList = hardwareList;
          this.frontview = null;
+         this.rackcase = null;
          this.unitsMap = null;
 
       }
 
-      init(frontview) {
+      init(frontview, rackcase) {
          this.frontview = document.getElementById(frontview);
+         this.rackcase = document.getElementById(rackcase);
+
          this.createUnitsMap();
+      }
+
+      prepareFrontView() {
+         this.frontview.classList.add(this.rack.type + "-view");
+         this.rackcase.classList.add(this.rack.type + "-case-" + this.rack.size);
+         let lcol = this.rackcase.getElementsByClassName("index-col-left")[0];
+         let rcol = this.rackcase.getElementsByClassName("index-col-right")[0];
+         this.formatRackCase(lcol, rcol);
+      }
+
+      getUnitNum(index) {
+         let unitNum = document.createElement('div');
+         unitNum.classList.add('unit-num');
+         unitNum.innerText = index;
+
+         return unitNum;
       }
 
       getHardwareTitle(name) {
@@ -86,6 +105,13 @@ var RackBuilder = (function namespace() {
          return unitstr.split("/").map(x => +x);
       }
 
+      formatRackCase(lcol, rcol) {
+         for (let idx = this.rack.size / 5; idx > 0; idx--) {
+            lcol.appendChild(this.getUnitNum(idx));
+            rcol.appendChild(this.getUnitNum(idx));
+         }
+      }
+
       createUnitsMap() {
          this.unitsMap = new Array(this.rack.size + 1);
          let rack_index = this.rack.name.split(" ")[1]
@@ -155,6 +181,7 @@ var RackBuilder = (function namespace() {
 
 
       createFrontView() {
+         this.prepareFrontView();
          for (let i = this.rack.size; i > 0;) {
             if (!this.unitsMap[i]) {
                this.addEmptyUnit(i, this.frontview);
@@ -173,6 +200,14 @@ var RackBuilder = (function namespace() {
    }
 
    class UnitsRackBuilder extends RackBuilder {
+
+      formatRackCase(lcol, rcol) {
+         for (let idx = this.rack.size; idx > 0; idx--) {
+            lcol.appendChild(this.getUnitNum(idx));
+            rcol.appendChild(this.getUnitNum(idx));
+         }
+      }
+
       createUnitsMap() {
          this.unitsMap = new Array(this.rack.size + 1);
          this.hardwareList.forEach(hw => {
@@ -233,18 +268,6 @@ var RackBuilder = (function namespace() {
          });
       }
 
-      init(frontview) {
-         this.frontview = document.getElementById(frontview);
-         this.createUnitsMap();
-      }
-
-      getUnitNum(index) {
-         let unitNum = document.createElement('div');
-         unitNum.classList.add('unit-num');
-         unitNum.innerText = index;
-
-         return unitNum;
-      }
 
       createDiskDriveContainer(size, maxdrive) {
          let c = document.createElement('div');
@@ -300,14 +323,14 @@ var RackBuilder = (function namespace() {
          hw.classList.add("use-hint");
          hw.appendChild(hint);
 
-         rackObject.appendChild(this.getUnitNum(index));
+         // rackObject.appendChild(this.getUnitNum(index));
          rackObject.appendChild(hw);
-         rackObject.appendChild(this.getUnitNum(index));
-         while (isize-- > 1) {
-            let idx = --index;
-            rackObject.appendChild(this.getUnitNum(idx));
-            rackObject.appendChild(this.getUnitNum(idx));
-         }
+         // rackObject.appendChild(this.getUnitNum(index));
+         // while (isize-- > 1) {
+         //    let idx = --index;
+         //    rackObject.appendChild(this.getUnitNum(idx));
+         //    rackObject.appendChild(this.getUnitNum(idx));
+         // }
       }
 
       addSwitch(item, index, view) {
@@ -340,14 +363,14 @@ var RackBuilder = (function namespace() {
          hw.classList.add("use-hint");
          hw.appendChild(hint);
 
-         rackObject.appendChild(this.getUnitNum(index));
+         // rackObject.appendChild(this.getUnitNum(index));
          rackObject.appendChild(hw);
-         rackObject.appendChild(this.getUnitNum(index));
-         while (isize-- > 1) {
-            let idx = --index;
-            rackObject.appendChild(this.getUnitNum(idx));
-            rackObject.appendChild(this.getUnitNum(idx));
-         }
+         // rackObject.appendChild(this.getUnitNum(index));
+         // while (isize-- > 1) {
+         //    let idx = --index;
+         //    rackObject.appendChild(this.getUnitNum(idx));
+         //    rackObject.appendChild(this.getUnitNum(idx));
+         // }
       }
 
       addBladeChassis(item, index, view) {
@@ -367,14 +390,14 @@ var RackBuilder = (function namespace() {
          let chassisId = "chassis-" + item.id
          hw.classList.add(chassisId);
 
-         rackObject.appendChild(this.getUnitNum(index));
+         // rackObject.appendChild(this.getUnitNum(index));
          rackObject.appendChild(hw);
-         rackObject.appendChild(this.getUnitNum(index));
-         while (isize-- > 1) {
-            let idx = --index;
-            rackObject.appendChild(this.getUnitNum(idx));
-            rackObject.appendChild(this.getUnitNum(idx));
-         }
+         // rackObject.appendChild(this.getUnitNum(index));
+         // while (isize-- > 1) {
+         //    let idx = --index;
+         //    rackObject.appendChild(this.getUnitNum(idx));
+         //    rackObject.appendChild(this.getUnitNum(idx));
+         // }
 
          return hw;
       }
@@ -386,18 +409,18 @@ var RackBuilder = (function namespace() {
          let emptyClass = index % 2 == 0 ? "empty-unit-even" : "empty-unit-odd";
          emptyUnit.classList.add(emptyClass);
 
-         rackObject.appendChild(this.getUnitNum(index));
+         // rackObject.appendChild(this.getUnitNum(index));
          rackObject.appendChild(emptyUnit);
-         rackObject.appendChild(this.getUnitNum(index));
+         // rackObject.appendChild(this.getUnitNum(index));
       }
 
-      addRackCover(title = "", view) {
-         let rackObject = view;
-         let cover = document.createElement('div');
-         cover.classList.add('rack-cover');
-         cover.innerText = title;
-         rackObject.appendChild(cover);
-      }
+      // addRackCover(title = "", view) {
+      //    let rackObject = view;
+      //    let cover = document.createElement('div');
+      //    cover.classList.add('rack-cover');
+      //    cover.innerText = title;
+      //    rackObject.appendChild(cover);
+      // }
 
       addBladeServers(item, chassis) {
          let rackObject = chassis;
@@ -519,8 +542,8 @@ var RackBuilder = (function namespace() {
       }
 
       createFrontView() {
-
-         this.addRackCover(this.rack.name, this.frontview);
+         this.prepareFrontView();
+         // this.addRackCover(this.rack.name, this.frontview);
 
          for (let i = this.rack.size; i > 0;) {
             if (!this.unitsMap[i]) {
@@ -544,7 +567,7 @@ var RackBuilder = (function namespace() {
             i = i - this.unitsMap[i].size;
          }
 
-         this.addRackCover("", this.frontview);
+         // this.addRackCover("", this.frontview);
 
       }
    }

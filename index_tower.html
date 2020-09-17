@@ -9,21 +9,14 @@
 </head>
 <body>
 <div class="rack-container">
-    <div></div>
-    <div class="tower-case" id="rackcase">
-        <div class="tower-col-left">
-            <div class="col-num">5</div>
-            <div class="col-num">4</div>
-            <div class="col-num">3</div>
-            <div class="col-num">2</div>
-            <div class="col-num">1</div>
-            <div class="col-num">0</div>
-        </div>
-    <div class="tower-view" id="frontview">
+    <div class="switch-view"></div>
+    <div id="rackcase">
+        <div class="index-col-left"></div>
+        <div id="frontview"></div>
+        <div class="index-col-right"></div>
     </div>
 </div>
-</div>
-</div>
+
 <script src="assets/js/app.js"></script>
 <script>
 
@@ -32,7 +25,7 @@
 
     (function (builderClass) {
         let builder = new builderClass(rack, hardwareList);
-        builder.init("frontview");
+        builder.init("frontview", "rackcase");
         builder.createFrontView();
     })(RackBuilder.create(rack.type));
 
