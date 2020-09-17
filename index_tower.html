@@ -8,9 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-<div class="tower-container">
+<div class="rack-container">
     <div></div>
-    <div class="tower-case">
+    <div class="tower-case" id="rackcase">
         <div class="tower-col-left">
             <div class="col-num">5</div>
             <div class="col-num">4</div>
@@ -26,12 +26,16 @@
 </div>
 <script src="assets/js/app.js"></script>
 <script>
-    let rack = fetchRack(2);
-    let hardwareList = fetchHardwareList();
 
-    let builder = new RackBuilder[rack.type](rack, hardwareList);
-    builder.init("frontview");
-    builder.createFrontView();
+    let rack = fetchRack(2);
+    let hardwareList = fetchHardwareListTowers();
+
+    (function (builderClass) {
+        let builder = new builderClass(rack, hardwareList);
+        builder.init("frontview");
+        builder.createFrontView();
+    })(RackBuilder.create(rack.type));
+
 </script>
 </body>
 </html>

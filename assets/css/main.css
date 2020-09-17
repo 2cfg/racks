@@ -5,12 +5,19 @@ body {
     background-color: #eee; 
 }
 
-.rack-container {
+/* .rack-container {
     display: grid;
-    grid-template-columns: 120px 320px 320px 1fr;
+    grid-template-columns: 120px 324px 1fr;
     grid-template-rows: 1200px;
     grid-column-gap: 15px;
     padding: 20px;
+} */
+
+.rack-container {
+    display: grid;
+    grid-template-columns: 120px 324px 1fr;
+    grid-template-rows: 1200px;
+    grid-column-gap: 15px;
 }
 
 
@@ -556,20 +563,12 @@ body {
 
 /* ----- DESKTOP STYLES ----- */
 
-.tower-container {
-    display: grid;
-    grid-template-columns: 120px 324px 1fr;
-    grid-template-rows: 756px;
-    grid-column-gap: 15px;
-}
-
-
-
-.tower-container .tower-case {
+.rack-container .tower-case {
     display: grid;
     grid-template-columns: 12px 300px 12px;
     grid-template-rows: 12px 732px 12px;
     background-color: #a0a4ad;
+    height: 756px;
 }
 
 .tower-case .tower-view {
